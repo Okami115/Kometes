@@ -11,29 +11,6 @@ void MoveSpaceShip(Rectangle& SpaceShip)
 
     if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
     {
-        /*
-        if (Cursor.x > GetScreenWidth() / 2 && Cursor.y > GetScreenHeight() / 2)
-        {
-            SpaceShip.x += Dif.x * GetFrameTime();
-            SpaceShip.y += Dif.y * GetFrameTime();
-        }
-        if (Cursor.x < GetScreenWidth() / 2 && Cursor.y > GetScreenHeight() / 2)
-        {
-            SpaceShip.x -= Dif.x * GetFrameTime();
-            SpaceShip.y += Dif.y * GetFrameTime();
-        }
-        if (Cursor.x > GetScreenWidth() / 2 && Cursor.y < GetScreenHeight() / 2)
-        {
-            SpaceShip.x += Dif.x * GetFrameTime();
-            SpaceShip.y -= Dif.y * GetFrameTime();
-        }
-        if (Cursor.x < GetScreenWidth() / 2 && Cursor.y < GetScreenHeight() / 2)
-        {
-            SpaceShip.x -= Dif.x * GetFrameTime();
-            SpaceShip.y -= Dif.y * GetFrameTime();
-        }
-        */
-
         SpaceShip.x -= Dif.x * GetFrameTime();
         SpaceShip.y -= Dif.y * GetFrameTime();
     }
@@ -54,13 +31,14 @@ int main()
     Vector2 v3 = { screenWidth, screenHeight};
 
     Rectangle Rec1 = { screenWidth / 2, screenHeight / 2, 30, 30 };
+
     Vector2 Origin = { Rec1.width / 2, Rec1.height / 2 };
 
     int rotated = 0;
     SetTargetFPS(60);               
     while (!WindowShouldClose()) 
     {
-
+        rotated++;
         MoveSpaceShip(Rec1);
 
         BeginDrawing();
