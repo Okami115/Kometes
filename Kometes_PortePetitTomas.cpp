@@ -4,7 +4,7 @@
 namespace OkamiIndustries
 {
 
-    //Texture2D SpaceShip = LoadTexture("SpaceShip.png");
+    
 
     void MoveSpaceShip(Rectangle& SpaceShip)
     {
@@ -37,11 +37,9 @@ int main()
 
     InitWindow(screenWidth, screenHeight, "OkamiIndustries T - 03 || Kometes || V0.05");
 
-    Vector2 v1 = { screenWidth / 2, 0 };
-    Vector2 v2 = { 0 ,0 };
-    Vector2 v3 = { screenWidth, screenHeight };
+    Texture2D SpaceShip = LoadTexture("SpaceShip.png");
 
-    Rectangle Rec1 = { screenWidth / 2, screenHeight / 2, 30, 30 };
+    Rectangle Rec1 = { screenWidth / 2, screenHeight / 2, 110, 110 };
 
     Vector2 Origin = { Rec1.width / 2, Rec1.height / 2 };
     Vector2 SpritePos = { Rec1.x, Rec1.y };
@@ -52,17 +50,18 @@ int main()
     while (!WindowShouldClose())
     {
         OkamiIndustries::MoveSpaceShip(Rec1);
+        SpritePos = { Rec1.x, Rec1.y };
 
         BeginDrawing();
 
         ClearBackground(BLACK);
-        DrawRectanglePro(Rec1, Origin, rotated, ORANGE);
-        //DrawTextureRec(OkamiIndustries::SpaceShip, Rec1, SpritePos, WHITE);
+        DrawRectanglePro(Rec1, Origin, rotated, BLACK);
+        DrawTexture(SpaceShip, Rec1.x - Rec1.width / 2, Rec1.y - Rec1.height / 2, WHITE);
 
         EndDrawing();
     }
 
-    //UnloadTexture(OkamiIndustries::SpaceShip);
+    UnloadTexture(SpaceShip);
     CloseWindow();
 
     return 0;
