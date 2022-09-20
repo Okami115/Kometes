@@ -4,7 +4,7 @@
 namespace OkamiIndustries
 {
 
-    Texture2D SpaceShip = LoadTexture("SpaceShip.png");
+    //Texture2D SpaceShip = LoadTexture("SpaceShip.png");
 
     void MoveSpaceShip(Rectangle& SpaceShip)
     {
@@ -57,12 +57,12 @@ int main()
 
         ClearBackground(BLACK);
         DrawRectanglePro(Rec1, Origin, rotated, ORANGE);
-        DrawTextureRec(OkamiIndustries::SpaceShip, Rec1, SpritePos, WHITE);
+        //DrawTextureRec(OkamiIndustries::SpaceShip, Rec1, SpritePos, WHITE);
 
         EndDrawing();
     }
 
-    UnloadTexture(OkamiIndustries::SpaceShip);
+    //UnloadTexture(OkamiIndustries::SpaceShip);
     CloseWindow();
 
     return 0;
