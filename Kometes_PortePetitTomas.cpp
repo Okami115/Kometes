@@ -1,5 +1,45 @@
 #include "raylib.h"
 
+void MoveSpaceShip(Rectangle& SpaceShip)
+{
+    Vector2 Cursor = GetMousePosition();
+
+    Vector2 Dif;
+
+    Dif.x = SpaceShip.x - Cursor.x;
+    Dif.y = SpaceShip.y - Cursor.y;
+
+    if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+    {
+        /*
+        if (Cursor.x > GetScreenWidth() / 2 && Cursor.y > GetScreenHeight() / 2)
+        {
+            SpaceShip.x += Dif.x * GetFrameTime();
+            SpaceShip.y += Dif.y * GetFrameTime();
+        }
+        if (Cursor.x < GetScreenWidth() / 2 && Cursor.y > GetScreenHeight() / 2)
+        {
+            SpaceShip.x -= Dif.x * GetFrameTime();
+            SpaceShip.y += Dif.y * GetFrameTime();
+        }
+        if (Cursor.x > GetScreenWidth() / 2 && Cursor.y < GetScreenHeight() / 2)
+        {
+            SpaceShip.x += Dif.x * GetFrameTime();
+            SpaceShip.y -= Dif.y * GetFrameTime();
+        }
+        if (Cursor.x < GetScreenWidth() / 2 && Cursor.y < GetScreenHeight() / 2)
+        {
+            SpaceShip.x -= Dif.x * GetFrameTime();
+            SpaceShip.y -= Dif.y * GetFrameTime();
+        }
+        */
+
+        SpaceShip.x -= Dif.x * GetFrameTime();
+        SpaceShip.y -= Dif.y * GetFrameTime();
+    }
+
+}
+
 int main()
 {
     const int screenWidth = 1920;
@@ -7,18 +47,21 @@ int main()
 
     InitWindow(screenWidth, screenHeight, "OkamiIndustries T - 03 || Kometes || V0.0");
 
+
+
     Vector2 v1 = { screenWidth / 2, 0 };
     Vector2 v2 = { 0 ,0 };
     Vector2 v3 = { screenWidth, screenHeight};
 
-    Rectangle Rec1 = { screenWidth / 2, screenHeight / 2, 300, 300 };
+    Rectangle Rec1 = { screenWidth / 2, screenHeight / 2, 30, 30 };
     Vector2 Origin = { Rec1.width / 2, Rec1.height / 2 };
 
     int rotated = 0;
     SetTargetFPS(60);               
     while (!WindowShouldClose()) 
     {
-        rotated = rotated + 1;
+
+        MoveSpaceShip(Rec1);
 
         BeginDrawing();
 
