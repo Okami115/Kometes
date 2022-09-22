@@ -16,6 +16,9 @@
     <Filter Include="SRC\GameLoop">
       <UniqueIdentifier>{b22ac7fe-03dc-4e15-94c4-f243387faa1c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SRC\Comets">
+      <UniqueIdentifier>{4e257fbb-8dee-4bb7-a271-59008271f5d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -26,6 +29,9 @@
     </ClCompile>
     <ClCompile Include="GameLoop.cpp">
       <Filter>SRC\GameLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="Comets.cpp">
+      <Filter>SRC\Comets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +45,9 @@
     </ClInclude>
     <ClInclude Include="GameLoop.h">
       <Filter>SRC\GameLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="Comets.h">
+      <Filter>SRC\Comets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

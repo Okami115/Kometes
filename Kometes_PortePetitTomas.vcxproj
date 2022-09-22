@@ -160,6 +160,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Comets.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SpaceShip.cpp" />
@@ -168,6 +169,7 @@
     <Image Include="SpaceShip.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Comets.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="SpaceShip.h" />
   </ItemGroup>
