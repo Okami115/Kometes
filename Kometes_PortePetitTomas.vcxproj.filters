@@ -1,22 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de origen">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="SRC">
+      <UniqueIdentifier>{4a4141a9-d8b3-486a-b448-45c91f7917bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de encabezado">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="SRC\Main">
+      <UniqueIdentifier>{a300d278-8fb4-4d7c-85f2-7cb9c9fd296c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de recursos">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="assets">
+      <UniqueIdentifier>{8ad898e8-9e16-4fc0-a14c-fe3b2d33cca5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SRC\SpaceShip">
+      <UniqueIdentifier>{5c30a534-8df7-42ec-91a5-18f8131b121f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SRC\GameLoop">
+      <UniqueIdentifier>{b22ac7fe-03dc-4e15-94c4-f243387faa1c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Kometes_PortePetitTomas.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="Main.cpp">
+      <Filter>SRC\Main</Filter>
     </ClCompile>
+    <ClCompile Include="SpaceShip.cpp">
+      <Filter>SRC\SpaceShip</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLoop.cpp">
+      <Filter>SRC\GameLoop</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="SpaceShip.png">
+      <Filter>assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SpaceShip.h">
+      <Filter>SRC\SpaceShip</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLoop.h">
+      <Filter>SRC\GameLoop</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
