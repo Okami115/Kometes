@@ -5,27 +5,47 @@
 
 namespace OkamiIndustries
 {
-    
+    const int maxAmmo = 100;
+    Circle bullet[maxAmmo];
+    int bulletCounter;
+
     float rotated = 0;
+    bool isBulletTravelling[maxAmmo];
+    bool isShipTravelling = false;
+    Vector2 trayectoryShip = {0, 0};
+
+    int currentBullet = 0;
+
+    Vector2 trayectory[maxAmmo];
+
+    void inicializedBullets()
+    {
+        for (int i = 0; i < maxAmmo; i++)
+        {
+            bullet[i] = { Vector2 {-100, -100}, 4 };
+            isBulletTravelling[i] = false;
+            trayectory[i] = { 0,0 };
+        }
+    }
 
     void MoveSpaceShip(Vector2& shipPosition)
     {
         Vector2 Cursor = GetMousePosition();
-
+        Vector2 normalDir = {0,0};
         Vector2 Dif;
-
-        float aceleration = 1000.0f;
 
         Dif.x = shipPosition.x - Cursor.x;
         Dif.y = shipPosition.y - Cursor.y;
 
-        float arcTan = atan(Dif.y / Dif.x);
-
-        float angle = arcTan * 180 / PI;
+        float aceleration = 1000.0f;
 
         float Module = sqrt(pow(Dif.x, 2) + pow(Dif.y, 2));
 
-        Vector2 normalDir = { Dif.x / Module, Dif.y / Module };
+        normalDir = { Dif.x / Module, Dif.y / Module };
+
+        float arcTan = atan(Dif.y / Dif.x);
+
+        float angle = arcTan * 180 / PI;
 
         if (GetMousePosition().x < shipPosition.x && GetMousePosition().y < shipPosition.y)
         {
@@ -42,10 +62,52 @@ namespace OkamiIndustries
 
         rotated = angle + 90;
 
-        if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+        if (IsMouseButtonReleased(MOUSE_BUTTON_RIGHT))
         {
-            shipPosition.x -= normalDir.x * aceleration * GetFrameTime();
-            shipPosition.y -= normalDir.y * aceleration * GetFrameTime();
+            trayectoryShip = normalDir;
+            isShipTravelling = true;
+        }
+
+        if (isShipTravelling)
+        {
+            shipPosition.x -= trayectoryShip.x * aceleration * GetFrameTime();
+            shipPosition.y -= trayectoryShip.y * aceleration * GetFrameTime();
+
+            if (shipPosition.x == trayectoryShip.x && shipPosition.y == trayectoryShip.y)
+            {
+                isShipTravelling = false;
+            }
+        }
+
+
+        // Shoot}
+        if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+        {
+            trayectory[currentBullet] = normalDir;
+            isBulletTravelling[currentBullet] = true;
+            bullet[currentBullet].Position.x = shipPosition.x;
+            bullet[currentBullet].Position.y = shipPosition.y;
+            currentBullet++;
+            if (currentBullet > maxAmmo)
+            {
+                currentBullet = 0;
+            }
+        }
+
+        for (int i = 0; i < maxAmmo; i++)
+        {
+            if (isBulletTravelling[i])
+            {
+                bullet[i].Position.x -= (trayectory[i].x * 2) * aceleration * GetFrameTime();
+                bullet[i].Position.y -= (trayectory[i].y * 2) * aceleration * GetFrameTime();
+
+                if (bullet[i].Position.x > GetScreenWidth() || bullet[i].Position.y > GetScreenHeight() || bullet[i].Position.x < 0 || bullet[i].Position.y < 0)
+                {
+                    isBulletTravelling[i] = false;
+                    bullet[i].Position.x = -100;
+                    bullet[i].Position.y = -100;
+                }
+            }
         }
 
     }
@@ -60,6 +122,7 @@ namespace OkamiIndustries
         DrawRectanglePro(destRec, OriginSpaceShip, rotated, WHITE);
 
         DrawTexturePro(SpaceShip, shipRectangle, destRec, OriginSpaceShip, rotated, WHITE);
+
         if (CheckCollisionSpaceShip(SpaceShipColider, Comets))
         {
             DrawCircle(SpaceShipColider.Position.x, SpaceShipColider.Position.y, SpaceShipColider.Radius, RED);
@@ -71,17 +134,24 @@ namespace OkamiIndustries
         
     }
 
-    bool CheckCollisionSpaceShip(Circle SpaceShipColider, Circle Comets)
+    bool CheckCollisionSpaceShip(Circle collider, Circle Comets)
     {
-        float distX = SpaceShipColider.Position.x - Comets.Position.x;
-        float distY = SpaceShipColider.Position.y - Comets.Position.y;
+        float distX = collider.Position.x - Comets.Position.x;
+        float distY = collider.Position.y - Comets.Position.y;
         float distance = sqrt((distX * distX) + (distY * distY));
 
-        if (distance <= SpaceShipColider.Radius + Comets.Radius) 
+        if (distance <= collider.Radius + Comets.Radius)
             return true;
         
         return false;
     }
 
+    void DrawBullets()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            DrawCircle(bullet[i].Position.x, bullet[i].Position.y, bullet[i].Radius, SKYBLUE);
+        }
+    }
 
 }

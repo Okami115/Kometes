@@ -15,7 +15,7 @@ namespace OkamiIndustries
 
         srand(time(NULL));
 
-        InitWindow(screenWidth, screenHeight, "OkamiIndustries T - 03 || Kometes || V0.10");
+        InitWindow(screenWidth, screenHeight, "OkamiIndustries T - 03 || Kometes || V0.13");
 
         Texture2D SpaceShip = LoadTexture("assets/SpaceShip.png");
 
@@ -26,7 +26,11 @@ namespace OkamiIndustries
         Circle Comets;
         Circle SpaceShipColider;
 
+        extern const int maxArmmo;
+        extern Circle bullet[100];
+
         spawnComets(Comets);
+        inicializedBullets();
 
         SetTargetFPS(60);
 
@@ -42,9 +46,12 @@ namespace OkamiIndustries
 
             DrawSpaceShip(shipRectangle, OriginSpaceShip, shipPosition, SpaceShip, SpaceShipColider, Comets);
 
-            DrawComets(Comets);
+            for (int i = 0; i < 100; i++)
+            {
+                DrawComets(Comets, SpaceShipColider, bullet[i]);
+            }
             
-            
+            DrawBullets();
 
             EndDrawing();
         }

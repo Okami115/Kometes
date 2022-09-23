@@ -1,5 +1,6 @@
 #include "Comets.h"
 #include "GameLoop.h"
+#include "SpaceShip.h"
 #include <iostream> 
 
 namespace OkamiIndustries
@@ -29,8 +30,20 @@ namespace OkamiIndustries
 
 	}
 
-	void DrawComets(Circle& comets)
+	void DrawComets(Circle& comets, Circle spaceShip, Circle bullets)
 	{
-		DrawCircle(comets.Position.x, comets.Position.y, comets.Radius, RAYWHITE);
+		if (CheckCollisionSpaceShip(comets, spaceShip))
+		{
+			DrawCircle(comets.Position.x, comets.Position.y, comets.Radius, RED);
+		}
+		if (CheckCollisionSpaceShip(comets, bullets))
+		{
+			DrawCircle(comets.Position.x, comets.Position.y, comets.Radius, RED);
+		}
+		else
+		{
+			DrawCircle(comets.Position.x, comets.Position.y, comets.Radius, WHITE);
+		}
+		
 	}
 }
