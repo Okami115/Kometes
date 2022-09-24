@@ -5,18 +5,18 @@
 
 namespace OkamiIndustries
 {
+    //bullets
     const int maxAmmo = 100;
     Circle bullet[maxAmmo];
     int bulletCounter;
+    bool isBulletTravelling[maxAmmo];
+    Vector2 trayectory[maxAmmo];
 
     float rotated = 0;
-    bool isBulletTravelling[maxAmmo];
     bool isShipTravelling = false;
     Vector2 trayectoryShip = {0, 0};
 
     int currentBullet = 0;
-
-    Vector2 trayectory[maxAmmo];
 
     void inicializedBullets()
     {
@@ -80,7 +80,7 @@ namespace OkamiIndustries
         }
 
 
-        // Shoot}
+        // Shoot
         if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
         {
             trayectory[currentBullet] = normalDir;
@@ -119,17 +119,17 @@ namespace OkamiIndustries
         SpaceShipColider.Position.x = shipPosition.x;
         SpaceShipColider.Position.y = shipPosition.y;
         Rectangle destRec = { shipPosition.x, shipPosition.y, shipRectangle.width, shipRectangle.height };
-        DrawRectanglePro(destRec, OriginSpaceShip, rotated, WHITE);
+        //DrawRectanglePro(destRec, OriginSpaceShip, rotated, WHITE);
 
         DrawTexturePro(SpaceShip, shipRectangle, destRec, OriginSpaceShip, rotated, WHITE);
 
         if (CheckCollisionSpaceShip(SpaceShipColider, Comets))
         {
-            DrawCircle(SpaceShipColider.Position.x, SpaceShipColider.Position.y, SpaceShipColider.Radius, RED);
+            //DrawCircle(SpaceShipColider.Position.x, SpaceShipColider.Position.y, SpaceShipColider.Radius, RED);
         }
         else
         {
-            DrawCircle(SpaceShipColider.Position.x, SpaceShipColider.Position.y, SpaceShipColider.Radius, WHITE);
+            //DrawCircle(SpaceShipColider.Position.x, SpaceShipColider.Position.y, SpaceShipColider.Radius, WHITE);
         }
         
     }

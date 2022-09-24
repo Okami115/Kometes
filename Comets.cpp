@@ -8,7 +8,7 @@ namespace OkamiIndustries
 	void spawnComets(Circle& comets)
 	{
 
-		comets.Radius = rand() % 50 + 10;
+		comets.Radius = 15;
 		comets.Position.x = 0;
 		comets.Position.y = rand() % GetScreenHeight();
 	}
@@ -30,20 +30,8 @@ namespace OkamiIndustries
 
 	}
 
-	void DrawComets(Circle& comets, Circle spaceShip, Circle bullets)
+	void DrawComets(Circle& comets, Circle spaceShip)
 	{
-		if (CheckCollisionSpaceShip(comets, spaceShip))
-		{
-			DrawCircle(comets.Position.x, comets.Position.y, comets.Radius, RED);
-		}
-		if (CheckCollisionSpaceShip(comets, bullets))
-		{
-			DrawCircle(comets.Position.x, comets.Position.y, comets.Radius, RED);
-		}
-		else
-		{
-			DrawCircle(comets.Position.x, comets.Position.y, comets.Radius, WHITE);
-		}
-		
+		DrawCircle(comets.Position.x, comets.Position.y, comets.Radius, RED);
 	}
 }

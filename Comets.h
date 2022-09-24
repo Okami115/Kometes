@@ -5,6 +5,6 @@ namespace OkamiIndustries
 {
 	void MoveComets(Circle& comets);
 	void spawnComets(Circle& comets);
-	void DrawComets(Circle& comets, Circle spaceShip, Circle bullets);
+	void DrawComets(Circle& comets, Circle spaceShip);
 }
 

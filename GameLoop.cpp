@@ -15,9 +15,12 @@ namespace OkamiIndustries
 
         srand(time(NULL));
 
-        InitWindow(screenWidth, screenHeight, "OkamiIndustries T - 03 || Kometes || V0.13");
+        InitWindow(screenWidth, screenHeight, "OkamiIndustries T - 03 || Kometes || V0.14");
 
         Texture2D SpaceShip = LoadTexture("assets/SpaceShip.png");
+
+        Texture2D Background = LoadTexture("assets/Background.png");
+        Vector2 BackgroudPosition = { 0, 0 };
 
         Vector2 OriginSpaceShip = { SpaceShip.width / 2, SpaceShip.height / 2 };
         Vector2 shipPosition = { GetScreenWidth() / 2, GetScreenHeight() / 2 };
@@ -26,16 +29,20 @@ namespace OkamiIndustries
         Circle Comets;
         Circle SpaceShipColider;
 
+        spawnComets(Comets);
+        Texture2D SmallComets = LoadTexture("assets/Comets Small.png");
+        Vector2 CometsPositionCenter = { Comets.Position.x + Comets.Radius / 2, Comets.Position.y + Comets.Radius / 2 };
+
         extern const int maxArmmo;
         extern Circle bullet[100];
 
-        spawnComets(Comets);
         inicializedBullets();
 
         SetTargetFPS(60);
 
         while (!WindowShouldClose())
         {
+            CometsPositionCenter = { Comets.Position.x + Comets.Radius, Comets.Position.y };
 
             MoveSpaceShip(shipPosition);
 
@@ -43,13 +50,11 @@ namespace OkamiIndustries
             
             BeginDrawing();
             ClearBackground(BLACK);
+            DrawTextureEx(Background, BackgroudPosition, 0, 1, WHITE);
 
             DrawSpaceShip(shipRectangle, OriginSpaceShip, shipPosition, SpaceShip, SpaceShipColider, Comets);
 
-            for (int i = 0; i < 100; i++)
-            {
-                DrawComets(Comets, SpaceShipColider, bullet[i]);
-            }
+            DrawTextureEx(SmallComets, CometsPositionCenter, 140, 1, WHITE);
             
             DrawBullets();
 
