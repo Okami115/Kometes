@@ -3,8 +3,8 @@
 
 namespace OkamiIndustries
 {
-	void MoveComets(Circle& comets);
-	void spawnComets(Circle& comets);
-	void DrawComets(Circle& comets, Circle spaceShip);
+	void MoveComets();
+	void spawnComets();
+	void DrawComets(Texture2D SpriteComets);
 }
 

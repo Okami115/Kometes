@@ -18,6 +18,8 @@ namespace OkamiIndustries
         InitWindow(screenWidth, screenHeight, "OkamiIndustries T - 03 || Kometes || V0.14");
 
         Texture2D SpaceShip = LoadTexture("assets/SpaceShip.png");
+        SpaceShip.width = SpaceShip.width / 2;
+        SpaceShip.height = SpaceShip.height / 2;
 
         Texture2D Background = LoadTexture("assets/Background.png");
         Vector2 BackgroudPosition = { 0, 0 };
@@ -26,35 +28,36 @@ namespace OkamiIndustries
         Vector2 shipPosition = { GetScreenWidth() / 2, GetScreenHeight() / 2 };
         Rectangle shipRectangle = { 0, 0, SpaceShip.width, SpaceShip.height };
 
-        Circle Comets;
         Circle SpaceShipColider;
 
-        spawnComets(Comets);
+        spawnComets();
         Texture2D SmallComets = LoadTexture("assets/Comets Small.png");
-        Vector2 CometsPositionCenter = { Comets.Position.x + Comets.Radius / 2, Comets.Position.y + Comets.Radius / 2 };
 
         extern const int maxArmmo;
         extern Circle bullet[100];
 
-        inicializedBullets();
+        extern Circle comets[10];
 
-        SetTargetFPS(60);
+        inicializedBullets();
 
         while (!WindowShouldClose())
         {
-            CometsPositionCenter = { Comets.Position.x + Comets.Radius, Comets.Position.y };
 
             MoveSpaceShip(shipPosition);
 
-            MoveComets(Comets);
-            
+            MoveComets();
+
             BeginDrawing();
             ClearBackground(BLACK);
             DrawTextureEx(Background, BackgroudPosition, 0, 1, WHITE);
 
-            DrawSpaceShip(shipRectangle, OriginSpaceShip, shipPosition, SpaceShip, SpaceShipColider, Comets);
+            for (int i = 0; i < 10; i++)
+            {
 
-            DrawTextureEx(SmallComets, CometsPositionCenter, 140, 1, WHITE);
+                DrawSpaceShip(shipRectangle, OriginSpaceShip, shipPosition, SpaceShip, SpaceShipColider, comets[i]);
+            }
+
+            DrawComets(SmallComets);
             
             DrawBullets();
 
@@ -62,6 +65,8 @@ namespace OkamiIndustries
         }
 
         UnloadTexture(SpaceShip);
+        UnloadTexture(Background);
+        UnloadTexture(SmallComets);
         CloseWindow();
 
 

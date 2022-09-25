@@ -1,37 +1,109 @@
 #include "Comets.h"
 #include "GameLoop.h"
+#include "raymath.h"
 #include "SpaceShip.h"
 #include <iostream> 
 
 namespace OkamiIndustries
 {
-	void spawnComets(Circle& comets)
-	{
+	static int maxComets = 10;
+	float cometsSpeed = 1.0f;
+	float aceleration = 500;
+	bool cometsIsLive[10];
+	Vector2 cometsTrayectory[10];
+	Circle comets[10];
 
-		comets.Radius = 15;
-		comets.Position.x = 0;
-		comets.Position.y = rand() % GetScreenHeight();
+	extern Circle bullet[100];
+
+	void spawnComets()
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			comets[i].Radius = 15;
+			comets[i].Position.x = rand() % GetScreenWidth();
+			comets[i].Position.y = rand() % GetScreenHeight();
+			cometsIsLive[i] = true;
+			cometsTrayectory[i] = { (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 , (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 };
+		}
 	}
 
-	void MoveComets(Circle& comets)
+	void MoveComets()
 	{
-
-		comets.Position.x++;
-		comets.Position.y++;
-
-		if (comets.Position.x > GetScreenWidth())
+		for (int i = 0; i < 10; i++)
 		{
-			comets.Position.x = 0;
-		}
-		if (comets.Position.y > GetScreenHeight())
-		{
-			comets.Position.y = 0;
-		}
+			for (int j = 0; j < 100; j++)
+			{
+				if (CheckCollisionSpaceShip(comets[i], bullet[j]))
+				{
+					cometsIsLive[i] = false;
+					comets[i].Position.x = -100;
+					comets[i].Position.y = -100;
+				}
+			}
 
+			if (cometsIsLive[i])
+			{
+				comets[i].Position.x += cometsTrayectory[i].x * aceleration * GetFrameTime();
+				comets[i].Position.y += cometsTrayectory[i].y * aceleration * GetFrameTime();
+
+				if (comets[i].Position.x > GetScreenWidth())
+				{
+					comets[i].Position.x = 0;
+				}
+				if (comets[i].Position.y > GetScreenHeight())
+				{
+					comets[i].Position.y = 0;
+				}
+				if (comets[i].Position.x < 0)
+				{
+					comets[i].Position.x = GetScreenWidth();
+				}
+				if (comets[i].Position.y < 0)
+				{
+					comets[i].Position.y = GetScreenHeight();
+				}
+			}
+		}
 	}
 
-	void DrawComets(Circle& comets, Circle spaceShip)
+	void DrawComets(Texture2D SpriteComets)
 	{
-		DrawCircle(comets.Position.x, comets.Position.y, comets.Radius, RED);
+		for (int i = 0; i < 10; i++)
+		{
+			float rotation = 0;
+
+			float arcTan = atan(cometsTrayectory[i].y / cometsTrayectory[i].x);
+
+			float angle = arcTan * 180 / PI;
+
+			if (cometsTrayectory[i].x < comets[i].Position.x && cometsTrayectory[i].y < comets[i].Position.y)
+			{
+				if (cometsTrayectory[i].x < 0)
+				{
+
+					angle += 180;
+				}
+				else
+				{
+					angle += 360;
+				}
+				
+			}
+			if (cometsTrayectory[i].x < comets[i].Position.x && cometsTrayectory[i].y > comets[i].Position.y)
+			{
+				angle += 180;
+			}
+			if (cometsTrayectory[i].x > comets[i].Position.x && cometsTrayectory[i].y > comets[i].Position.y)
+			{
+				angle -= 360;
+			}
+			if (cometsTrayectory[i].x > comets[i].Position.x && cometsTrayectory[i].y < comets[i].Position.y)
+			{
+				angle -= 0;
+			}
+
+			rotation = angle + 90;
+			DrawTextureEx(SpriteComets, comets[i].Position, rotation, 1, WHITE);
+		}
 	}
 }
