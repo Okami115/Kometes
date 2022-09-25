@@ -12,6 +12,7 @@ namespace OkamiIndustries
 	bool cometsIsLive[10];
 	Vector2 cometsTrayectory[10];
 	Circle comets[10];
+	int random[10];
 
 	extern Circle bullet[100];
 
@@ -23,6 +24,7 @@ namespace OkamiIndustries
 			comets[i].Position.x = rand() % GetScreenWidth();
 			comets[i].Position.y = rand() % GetScreenHeight();
 			cometsIsLive[i] = true;
+			random[i] = rand() % 3 + 1;
 			cometsTrayectory[i] = { (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 , (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 };
 		}
 	}
@@ -66,7 +68,7 @@ namespace OkamiIndustries
 		}
 	}
 
-	void DrawComets(Texture2D SpriteComets)
+	void DrawComets(Texture2D SmallSprite, Texture2D MidSprite, Texture2D BigSprite)
 	{
 		for (int i = 0; i < 10; i++)
 		{
@@ -103,7 +105,19 @@ namespace OkamiIndustries
 			}
 
 			rotation = angle + 90;
-			DrawTextureEx(SpriteComets, comets[i].Position, rotation, 1, WHITE);
+
+			if (random[i] == 1)
+			{
+				DrawTextureEx(SmallSprite, comets[i].Position, rotation, 1, WHITE);
+			}
+			else if (random[i] == 2)
+			{
+				DrawTextureEx(MidSprite, comets[i].Position, rotation, 1, WHITE);
+			}
+			else
+			{
+				DrawTextureEx(BigSprite, comets[i].Position, rotation, 1, WHITE);
+			}
 		}
 	}
 }

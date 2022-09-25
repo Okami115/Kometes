@@ -32,13 +32,23 @@ namespace OkamiIndustries
 
         spawnComets();
         Texture2D SmallComets = LoadTexture("assets/Comets Small.png");
+        SmallComets.width *= 2;
+        SmallComets.height *= 2;
+        Texture2D MidComets = LoadTexture("assets/Mid Comets.png");
+        MidComets.width *= 2;
+        MidComets.height *= 2;
+        Texture2D BigComets = LoadTexture("assets/Big Comets.png");
+        BigComets.width *= 2;
+        BigComets.height *= 2;
 
         extern const int maxArmmo;
         extern Circle bullet[100];
 
-        extern Circle comets[10];
+        Circle comets[10];
 
         inicializedBullets();
+
+       
 
         while (!WindowShouldClose())
         {
@@ -57,7 +67,11 @@ namespace OkamiIndustries
                 DrawSpaceShip(shipRectangle, OriginSpaceShip, shipPosition, SpaceShip, SpaceShipColider, comets[i]);
             }
 
-            DrawComets(SmallComets);
+
+
+
+
+            DrawComets(SmallComets,MidComets, BigComets);
             
             DrawBullets();
 
@@ -67,6 +81,7 @@ namespace OkamiIndustries
         UnloadTexture(SpaceShip);
         UnloadTexture(Background);
         UnloadTexture(SmallComets);
+        UnloadTexture(MidComets);
         CloseWindow();
 
 

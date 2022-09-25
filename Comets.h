@@ -5,6 +5,6 @@ namespace OkamiIndustries
 {
 	void MoveComets();
 	void spawnComets();
-	void DrawComets(Texture2D SpriteComets);
+	void DrawComets(Texture2D SmallSprite, Texture2D MidSprite, Texture2D BigSprite);
 }
 
