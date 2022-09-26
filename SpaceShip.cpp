@@ -123,7 +123,7 @@ namespace OkamiIndustries
 
         DrawTexturePro(SpaceShip, shipRectangle, destRec, OriginSpaceShip, rotated, WHITE);
 
-        if (CheckCollisionSpaceShip(SpaceShipColider, Comets))
+        if (CheckCollision(SpaceShipColider, Comets))
         {
             //DrawCircle(SpaceShipColider.Position.x, SpaceShipColider.Position.y, SpaceShipColider.Radius, RED);
         }
@@ -134,7 +134,7 @@ namespace OkamiIndustries
         
     }
 
-    bool CheckCollisionSpaceShip(Circle collider, Circle Comets)
+    bool CheckCollision(Circle collider, Circle Comets)
     {
         float distX = collider.Position.x - Comets.Position.x;
         float distY = collider.Position.y - Comets.Position.y;
