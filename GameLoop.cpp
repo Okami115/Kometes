@@ -46,6 +46,8 @@ namespace OkamiIndustries
 
         Circle comets[10];
 
+        extern int asteroidsCounter;
+
         inicializedBullets();
 
        
@@ -63,17 +65,14 @@ namespace OkamiIndustries
 
             for (int i = 0; i < 10; i++)
             {
-
                 DrawSpaceShip(shipRectangle, OriginSpaceShip, shipPosition, SpaceShip, SpaceShipColider, comets[i]);
             }
-
-
-
-
 
             DrawComets(SmallComets,MidComets, BigComets);
             
             DrawBullets();
+
+            DrawText(TextFormat("Counter %i", asteroidsCounter), 100, 100, 20, WHITE);
 
             EndDrawing();
         }
