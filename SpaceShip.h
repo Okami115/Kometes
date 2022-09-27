@@ -4,9 +4,10 @@
 
 namespace OkamiIndustries
 {
-	void MoveSpaceShip(Vector2& shipPosition);
-	void DrawSpaceShip(Rectangle shipRectangle, Vector2 OriginSpaceShip, Vector2 shipPosition, Texture2D SpaceShip, Circle& SpaceShipColider, Circle Comets);
+	void spawnShip();
+	void MoveSpaceShip();
+	void DrawSpaceShip(Texture2D SpaceShip);
 	bool CheckCollision(Circle SpaceShipColider, Circle Comets);
 	void DrawBullets();
-	void inicializedBullets();
+	void initBullets();
 }

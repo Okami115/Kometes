@@ -11,21 +11,6 @@ namespace OkamiIndustries
 	float aceleration = 500;
 	int asteroidsCounter = 0;
 
-	enum typeComets
-	{
-		SmallComets = 1,
-		MidComets,
-		BigComets,
-	};
-
-	struct Comets
-	{
-		Circle cometsCollider;
-		Vector2 cometsTrayectory;
-		int typeComets;
-		bool cometsIsLive;
-	};
-
 	Comets comets[100];
 	extern Circle bullet[100];
 
@@ -34,33 +19,39 @@ namespace OkamiIndustries
 		for (int i = 0; i < 10; i++)
 		{
 			asteroidsCounter++;
+			comets[i].cometsCollider.Position.x = rand() % GetScreenWidth();
+			comets[i].cometsCollider.Position.y = rand() % GetScreenHeight();
+			comets[i].cometsIsLive = true;
+			comets[i].cometsTrayectory = { (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 , (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 };
+
 			comets[i].typeComets = rand() % 3 + 1;
+
 			if (comets[i].typeComets == (int)SmallComets)
 			{
-				comets[i].cometsCollider.Position.x = rand() % GetScreenWidth();
-				comets[i].cometsCollider.Position.y = rand() % GetScreenHeight();
 				comets[i].cometsCollider.Radius = 15;
-				comets[i].cometsIsLive = true;
-				comets[i].cometsTrayectory = { (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 , (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 };
 			}
 			else if (comets[i].typeComets == (int)MidComets)
 			{
-				comets[i].cometsCollider.Position.x = rand() % GetScreenWidth();
-				comets[i].cometsCollider.Position.y = rand() % GetScreenHeight();
 				comets[i].cometsCollider.Radius = 30;
-				comets[i].cometsIsLive = true;
-				comets[i].cometsTrayectory = { (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 , (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 };
 			}
 			else if (comets[i].typeComets == (int)BigComets)
 			{
-				comets[i].cometsCollider.Position.x = rand() % GetScreenWidth();
-				comets[i].cometsCollider.Position.y = rand() % GetScreenHeight();
 				comets[i].cometsCollider.Radius = 60;
-				comets[i].cometsIsLive = true;
-				comets[i].cometsTrayectory = { (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 , (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 };
 			}
 			
 		}
+	}
+
+	void destroyComets()
+	{
+		for (int i = 0; i < asteroidsCounter; i++)
+		{
+			comets[i].cometsCollider.Position.x = -1000;
+			comets[i].cometsCollider.Position.y = -1000;
+			comets[i].cometsIsLive = false;
+		}
+		asteroidsCounter = 0;
+		spawnComets();
 	}
 
 	void MoveComets()
@@ -73,12 +64,28 @@ namespace OkamiIndustries
 				{
 					bullet[j].Position.x = -100;
 					bullet[j].Position.y = -100;
+
 					if (comets[i].typeComets == (int)SmallComets)
 					{
-						comets[i].cometsCollider.Position.x = -(rand() % GetScreenWidth());
-						comets[i].cometsCollider.Position.y = -(rand() % GetScreenHeight());
-						comets[i].typeComets = rand() % 3 + 1;
+						comets[i].cometsCollider.Position.x = rand() % GetScreenWidth();
+						comets[i].cometsCollider.Position.y = rand() % GetScreenHeight();
+						comets[i].cometsIsLive = true;
 						comets[i].cometsTrayectory = { (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 , (cometsSpeed * (float(rand()) / float(RAND_MAX))) - cometsSpeed / 2 };
+
+						comets[i].typeComets = rand() % 3 + 1;
+
+						if (comets[i].typeComets == (int)SmallComets)
+						{
+							comets[i].cometsCollider.Radius = 15;
+						}
+						else if (comets[i].typeComets == (int)MidComets)
+						{
+							comets[i].cometsCollider.Radius = 30;
+						}
+						else if (comets[i].typeComets == (int)BigComets)
+						{
+							comets[i].cometsCollider.Radius = 60;
+						}
 					}
 					else if (comets[i].typeComets == (int)MidComets)
 					{
@@ -184,8 +191,8 @@ namespace OkamiIndustries
 				Rectangle dest = { comets[i].cometsCollider.Position.x, comets[i].cometsCollider.Position.y, SmallSprite.width, SmallSprite.height};
 				Vector2 origin = { SmallSprite.width / 2, SmallSprite.height / 2 };
 				//DrawRectanglePro(dest, origin, rotation, WHITE);
+				DrawCircle(comets[i].cometsCollider.Position.x, comets[i].cometsCollider.Position.y, comets[i].cometsCollider.Radius, SKYBLUE);
 				DrawTexturePro(SmallSprite,source ,dest, origin, rotation, WHITE);
-				//DrawCircle(comets[i].cometsCollider.Position.x, comets[i].cometsCollider.Position.y, comets[i].cometsCollider.Radius, SKYBLUE);
 			}
 			else if (comets[i].typeComets == 2)
 			{
@@ -193,8 +200,8 @@ namespace OkamiIndustries
 				Rectangle dest = { comets[i].cometsCollider.Position.x, comets[i].cometsCollider.Position.y, MidSprite.width, MidSprite.height };
 				Vector2 origin = { MidSprite.width / 2, MidSprite.height / 2 };
 				//DrawRectanglePro(dest, origin, rotation, WHITE);
+				DrawCircle(comets[i].cometsCollider.Position.x, comets[i].cometsCollider.Position.y, comets[i].cometsCollider.Radius, BLUE);
 				DrawTexturePro(MidSprite, source, dest, origin, rotation, WHITE);
-				//DrawCircle(comets[i].cometsCollider.Position.x, comets[i].cometsCollider.Position.y, comets[i].cometsCollider.Radius, BLUE);
 			}
 			else
 			{
@@ -202,8 +209,8 @@ namespace OkamiIndustries
 				Rectangle dest = { comets[i].cometsCollider.Position.x, comets[i].cometsCollider.Position.y, BigSprite.width, BigSprite.height };
 				Vector2 origin = { BigSprite.width / 2, BigSprite.height / 2 };
 				//DrawRectanglePro(dest, origin, rotation, WHITE);
+				DrawCircle(comets[i].cometsCollider.Position.x, comets[i].cometsCollider.Position.y, comets[i].cometsCollider.Radius, VIOLET);
 				DrawTexturePro(BigSprite, source, dest, origin, rotation, WHITE);
-				//DrawCircle(comets[i].cometsCollider.Position.x, comets[i].cometsCollider.Position.y, comets[i].cometsCollider.Radius, VIOLET);
 			}
 		}
 	}
