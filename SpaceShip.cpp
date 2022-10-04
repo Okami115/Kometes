@@ -58,11 +58,11 @@ namespace OkamiIndustries
         float aceleration = 100.0f;
         float bulletAceleration = 1000.0f;
 
-        float Module = sqrt(pow(Dif.x, 2) + pow(Dif.y, 2));
+        float Module = static_cast <float>(sqrt(pow(Dif.x, 2) + pow(Dif.y, 2)));
 
         normalDir = { Dif.x / Module, Dif.y / Module };
 
-        float arcTan = atan(Dif.y / Dif.x);
+        float arcTan = static_cast <float>(atan(Dif.y / Dif.x));
 
         float angle = arcTan * 180 / PI;
 
@@ -116,21 +116,21 @@ namespace OkamiIndustries
             shipPosition.x -= trayectoryShip.x * aceleration * GetFrameTime();
             shipPosition.y -= trayectoryShip.y * aceleration * GetFrameTime();
 
-            if (shipPosition.x > GetScreenWidth())
+            if (shipPosition.x > static_cast <float>(GetScreenWidth()))
             {
                 shipPosition.x = 0;
             }
-            if (shipPosition.y > GetScreenHeight())
+            if (shipPosition.y > static_cast <float>(GetScreenHeight()))
             {
                 shipPosition.y = 0;
             }
             if (shipPosition.x < 0)
             {
-                shipPosition.x = GetScreenWidth();
+                shipPosition.x = static_cast <float>(GetScreenWidth());
             }
             if (shipPosition.y < 0)
             {
-                shipPosition.y = GetScreenHeight();
+                shipPosition.y = static_cast <float>(GetScreenHeight());
             }
 
             if (shipPosition.x == trayectoryShip.x && shipPosition.y == trayectoryShip.y)
@@ -174,8 +174,8 @@ namespace OkamiIndustries
 
     void DrawSpaceShip(Texture2D SpaceShip)
     {
-        Vector2 OriginSpaceShip = { SpaceShip.width / 2, SpaceShip.height / 2 };
-        Rectangle shipRectangle = { 0, 0, SpaceShip.width, SpaceShip.height };
+        Vector2 OriginSpaceShip = { static_cast <float>(SpaceShip.width) / 2, static_cast <float>(SpaceShip.height) / 2 };
+        Rectangle shipRectangle = { 0, 0, static_cast <float>(SpaceShip.width), static_cast <float>(SpaceShip.height) };
         Rectangle destRec = { shipPosition.x, shipPosition.y, shipRectangle.width, shipRectangle.height };
 
         SpaceShipColider = { shipPosition, SpaceShip.width / 3 };
@@ -189,9 +189,11 @@ namespace OkamiIndustries
 
     bool CheckCollision(Circle collider, Circle Comets)
     {
+#pragma warning (disable:26451)
         float distX = collider.Position.x - Comets.Position.x;
         float distY = collider.Position.y - Comets.Position.y;
-        float distance = sqrt((distX * distX) + (distY * distY));
+        float distance = static_cast <float>(sqrt((distX * distX) + (distY * distY)));
+#pragma warning (default:26451)
 
         if (distance <= collider.Radius + Comets.Radius)
             return true;
@@ -203,7 +205,7 @@ namespace OkamiIndustries
     {
         for (int i = 0; i < 100; i++)
         {
-            DrawCircle(bullet[i].Position.x, bullet[i].Position.y, bullet[i].Radius, SKYBLUE);
+            DrawCircle(static_cast <int>(bullet[i].Position.x), static_cast <int>(bullet[i].Position.y), static_cast <float>(bullet[i].Radius), SKYBLUE);
         }
     }
 

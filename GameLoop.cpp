@@ -13,7 +13,7 @@ namespace OkamiIndustries
         const int screenWidth = 1920;
         const int screenHeight = 1080;
 
-        srand(time(NULL));
+        SetRandomSeed(NULL);
 
         InitWindow(screenWidth, screenHeight, "OkamiIndustries T - 03 || Kometes || V0.20");
 
