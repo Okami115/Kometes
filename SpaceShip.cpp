@@ -3,6 +3,7 @@
 #include "SpaceShip.h"
 #include "GameLoop.h"
 #include "Comets.h"
+#include <iostream> 
 
 namespace OkamiIndustries
 {
@@ -13,6 +14,7 @@ namespace OkamiIndustries
     int lives = 3;
     bool isShipTravelling = false;
     Vector2 trayectoryShip = { 0, 0 };
+    float spaceShipAceleration = 100.0f;
 
 
     //bullets
@@ -28,6 +30,7 @@ namespace OkamiIndustries
 
     extern int asteroidsCounter;
     extern Comets comets[100];
+
     void spawnShip()
     {
         shipPosition = { (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 };
@@ -46,7 +49,7 @@ namespace OkamiIndustries
         }
     }
 
-    void MoveSpaceShip()
+    void MoveSpaceShip(Sound Shoot, Sound Hit)
     {
         Vector2 Cursor = GetMousePosition();
         Vector2 normalDir = {0,0};
@@ -55,16 +58,15 @@ namespace OkamiIndustries
         Dif.x = shipPosition.x - Cursor.x;
         Dif.y = shipPosition.y - Cursor.y;
 
-        float aceleration = 100.0f;
-        float bulletAceleration = 1000.0f;
-
-        float Module = static_cast <float>(sqrt(pow(Dif.x, 2) + pow(Dif.y, 2)));
-
-        normalDir = { Dif.x / Module, Dif.y / Module };
+        float bulletAceleration = 1000.0f;  
 
         float arcTan = static_cast <float>(atan(Dif.y / Dif.x));
 
         float angle = arcTan * 180 / PI;
+
+        float Module = static_cast <float>(sqrt(pow(Dif.x, 2) + pow(Dif.y, 2)));
+
+        normalDir = { Dif.x / Module, Dif.y / Module };
 
         if (GetMousePosition().x < shipPosition.x && GetMousePosition().y < shipPosition.y)
         {
@@ -85,6 +87,7 @@ namespace OkamiIndustries
             if (CheckCollision(SpaceShipColider, comets[i].cometsCollider))
             {
                 lives--;
+                PlaySound(Hit);
                 shipPosition = { (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 };
                 isShipTravelling = false;
                 destroyComets();
@@ -96,25 +99,21 @@ namespace OkamiIndustries
         {
             trayectoryShip = normalDir;
             isShipTravelling = true;
-            aceleration += 1000;
-            if (aceleration == 1000)
-            {
-                aceleration = 1000;
-            }
-        }
-        else if (!IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
-        {
-            aceleration -= 10 * GetFrameTime();
-            if (aceleration == 0)
-            {
-                aceleration = 0;
-            }
+
+            
         }
 
         if (isShipTravelling)
         {
-            shipPosition.x -= trayectoryShip.x * aceleration * GetFrameTime();
-            shipPosition.y -= trayectoryShip.y * aceleration * GetFrameTime();
+            spaceShipAceleration++;
+            if (spaceShipAceleration > 400.0f)
+            {
+                spaceShipAceleration = 400.0f;
+            }
+            shipPosition.x -= trayectoryShip.x * spaceShipAceleration * GetFrameTime();
+            shipPosition.y -= trayectoryShip.y * spaceShipAceleration * GetFrameTime();
+
+            std::cout << spaceShipAceleration << std::endl;
 
             if (shipPosition.x > static_cast <float>(GetScreenWidth()))
             {
@@ -139,7 +138,6 @@ namespace OkamiIndustries
             }
         }
 
-
         // Shoot
         if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
         {
@@ -148,6 +146,7 @@ namespace OkamiIndustries
             bullet[currentBullet].Position.x = shipPosition.x;
             bullet[currentBullet].Position.y = shipPosition.y;
             currentBullet++;
+            PlaySound(Shoot);
             if (currentBullet >= maxAmmo)
             {
                 currentBullet = 0;

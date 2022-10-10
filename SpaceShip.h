@@ -5,7 +5,7 @@
 namespace OkamiIndustries
 {
 	void spawnShip();
-	void MoveSpaceShip();
+	void MoveSpaceShip(Sound Shoot, Sound Hit);
 	void DrawSpaceShip(Texture2D SpaceShip);
 	bool CheckCollision(Circle SpaceShipColider, Circle Comets);
 	void DrawBullets();

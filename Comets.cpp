@@ -54,7 +54,7 @@ namespace OkamiIndustries
 		spawnComets();
 	}
 
-	void MoveComets()
+	void MoveComets(Sound boom)
 	{
 		for (int i = 0; i < asteroidsCounter + 1; i++)
 		{
@@ -64,6 +64,7 @@ namespace OkamiIndustries
 				{
 					bullet[j].Position.x = -100;
 					bullet[j].Position.y = -100;
+					PlaySound(boom);
 
 					if (comets[i].typeComets == (int)SmallComets)
 					{

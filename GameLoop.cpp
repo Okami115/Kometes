@@ -17,6 +17,12 @@ namespace OkamiIndustries
 
         InitWindow(screenWidth, screenHeight, "OkamiIndustries T - 03 || Kometes || V0.20");
 
+        InitAudioDevice();
+
+        Sound Shoot = LoadSound("assets/Shoot.wav");       
+        Sound Boom = LoadSound("assets/boom.wav");
+        Sound Hit = LoadSound("assets/Hit.wav");
+
         Texture2D SpaceShip = LoadTexture("assets/SpaceShip.png");
         SpaceShip.width = SpaceShip.width / 2;
         SpaceShip.height = SpaceShip.height / 2;
@@ -37,9 +43,9 @@ namespace OkamiIndustries
         while (!WindowShouldClose())
         {
 
-            MoveSpaceShip();
+            MoveSpaceShip(Shoot, Hit);
 
-            MoveComets();
+            MoveComets(Boom);
 
             BeginDrawing();
 
@@ -62,9 +68,10 @@ namespace OkamiIndustries
         UnloadTexture(SmallComets);
         UnloadTexture(MidComets);
         UnloadTexture(BigComets);
+        UnloadSound(Boom); 
+        UnloadSound(Shoot);     
+
+        CloseAudioDevice();
         CloseWindow();
-
-
     }
-
 }
