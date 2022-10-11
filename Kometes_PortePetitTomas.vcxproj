@@ -35,7 +35,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -107,6 +107,10 @@
       <Command>
       </Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -145,11 +149,20 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>winmm.lib;raylib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
     <PostBuildEvent>
+      <Command>DEL "C:\Users\Administrador\Desktop\Kometes\bin\Win32\Release\assets" /q
+MKDIR "$(SolutionDir)bin\$(Platform)\$(configuration)\assets"
+XCOPY "$(SolutionDir)lib\" "$(SolutionDir)bin\$(Platform)\$(Configuration)" /e /h /y /s
+XCOPY "$(ProyectDir)assets" "$(SolutionDir)bin\$(Platform)\$(Configuration)\assets" /e /h /y /s
+
+</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
       <Command>
       </Command>
-    </PostBuildEvent>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -173,6 +186,7 @@
     <ClCompile Include="Comets.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="SpaceShip.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +195,7 @@
   <ItemGroup>
     <ClInclude Include="Comets.h" />
     <ClInclude Include="GameLoop.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="SpaceShip.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

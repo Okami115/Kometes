@@ -1,0 +1,26 @@
+﻿  Generando código
+  Previous IPDB not found, fall back to full compilation.
+  All 20 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Generación de código finalizada
+raylib.lib(raudio.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'raylib.lib(raudio.obj)' o en 'C:\Users\Administrador\Desktop\Kometes\bin\Win32\Release\raylib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+raylib.lib(rcore.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'raylib.lib(rcore.obj)' o en 'C:\Users\Administrador\Desktop\Kometes\bin\Win32\Release\raylib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+raylib.lib(rglfw.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'raylib.lib(rglfw.obj)' o en 'C:\Users\Administrador\Desktop\Kometes\bin\Win32\Release\raylib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+raylib.lib(rshapes.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'raylib.lib(rshapes.obj)' o en 'C:\Users\Administrador\Desktop\Kometes\bin\Win32\Release\raylib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+raylib.lib(rtext.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'raylib.lib(rtext.obj)' o en 'C:\Users\Administrador\Desktop\Kometes\bin\Win32\Release\raylib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+raylib.lib(rtextures.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'raylib.lib(rtextures.obj)' o en 'C:\Users\Administrador\Desktop\Kometes\bin\Win32\Release\raylib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+raylib.lib(utils.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'raylib.lib(utils.obj)' o en 'C:\Users\Administrador\Desktop\Kometes\bin\Win32\Release\raylib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+  Kometes_PortePetitTomas.vcxproj -> C:\Users\Administrador\Desktop\Kometes\bin\Win32\Release\Kometes_PortePetitTomas.exe
+  Ya existe el subdirectorio o el archivo C:\Users\Administrador\Desktop\Kometes\bin\Win32\Release\assets.
+  C:\Users\Administrador\Desktop\Kometes\lib\raylib.dll
+  C:\Users\Administrador\Desktop\Kometes\lib\raylib.lib
+  C:\Users\Administrador\Desktop\Kometes\lib\raylibdll.lib
+  3 archivo(s) copiado(s)
+  assets\Background.png
+  assets\Big Comets.png
+  assets\Boom.wav
+  assets\Comets Small.png
+  assets\Hit.wav
+  assets\MId Comets.png
+  assets\Shoot.wav
+  assets\SpaceShip.png
+  8 archivo(s) copiado(s)

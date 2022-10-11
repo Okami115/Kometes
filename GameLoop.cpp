@@ -5,6 +5,7 @@
 #include "GameLoop.h"
 #include <iostream> 
 #include <time.h> 
+#include "menu.h"
 
 namespace OkamiIndustries
 {
@@ -15,11 +16,11 @@ namespace OkamiIndustries
 
         SetRandomSeed(NULL);
 
-        InitWindow(screenWidth, screenHeight, "OkamiIndustries T - 03 || Kometes || V0.20");
+        InitWindow(screenWidth, screenHeight, "OkamiIndustries T - 03 || Kometes || V0.22");
 
         InitAudioDevice();
 
-        Sound Shoot = LoadSound("assets/Shoot.wav");       
+        Sound Shoot = LoadSound("assets/Shoot.wav");
         Sound Boom = LoadSound("assets/boom.wav");
         Sound Hit = LoadSound("assets/Hit.wav");
 
@@ -38,10 +39,15 @@ namespace OkamiIndustries
 
         extern int asteroidsCounter;
 
+        //int selectMenu = 0;
+        //int setLoop = 0;
+
         initBullets();
 
         while (!WindowShouldClose())
         {
+
+            //LoopMenu(selectMenu, setLoop);
 
             MoveSpaceShip(Shoot, Hit);
 
@@ -50,6 +56,8 @@ namespace OkamiIndustries
             BeginDrawing();
 
             ClearBackground(BLACK);
+            //DrawMenu(selectMenu);
+
             DrawTextureEx(Background, BackgroudPosition, 0, 1, WHITE);
 
             DrawSpaceShip(SpaceShip);
@@ -69,7 +77,8 @@ namespace OkamiIndustries
         UnloadTexture(MidComets);
         UnloadTexture(BigComets);
         UnloadSound(Boom); 
-        UnloadSound(Shoot);     
+        UnloadSound(Shoot);
+        UnloadSound(Hit);
 
         CloseAudioDevice();
         CloseWindow();

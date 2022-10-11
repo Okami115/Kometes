@@ -19,6 +19,9 @@
     <Filter Include="SRC\Comets">
       <UniqueIdentifier>{4e257fbb-8dee-4bb7-a271-59008271f5d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SRC\Menu">
+      <UniqueIdentifier>{fdebc41c-94d6-4839-9d56-693bf0247e36}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -32,6 +35,9 @@
     </ClCompile>
     <ClCompile Include="Comets.cpp">
       <Filter>SRC\Comets</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>SRC\Menu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +54,9 @@
     </ClInclude>
     <ClInclude Include="Comets.h">
       <Filter>SRC\Comets</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>SRC\Menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
