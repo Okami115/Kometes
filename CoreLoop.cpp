@@ -4,6 +4,7 @@
 #include "SpaceShip.h"
 #include "Comets.h"
 #include "GameLoop.h"
+#include "CreditsLoop.h"
 #include <iostream> 
 #include <time.h> 
 #include "menu.h"
@@ -47,6 +48,11 @@ namespace OkamiIndustries
 		Texture2D exit = LoadTexture("assets/ExitNotSelect.png");
 		Texture2D exitSelect = LoadTexture("assets/ExitSelect.png");
 
+		Texture2D BackgroundCredits = LoadTexture("assets/BackgroundCredits.png");
+		Vector2 BackgroudCreditsPosition = { 0, 0 };
+		Texture2D Back = LoadTexture("assets/BackNotSelect.png");
+		Texture2D BackSelect = LoadTexture("assets/BackSelect.png");
+
 		spawnComets();
 		spawnShip();
 		Texture2D SmallComets = LoadTexture("assets/Comets Small.png");
@@ -60,6 +66,7 @@ namespace OkamiIndustries
 
 		while (!WindowShouldClose())
 		{
+			std::cout << setLoop << std::endl;
 
 			switch (setLoop)
 			{
@@ -75,11 +82,12 @@ namespace OkamiIndustries
 			}
 			case 2:
 			{
-
+				
 			}
 			case 3:
 			{
-
+				CreditsLoop(selectMenu, setLoop);
+				break;
 			}
 			case 4:
 			{
@@ -110,7 +118,8 @@ namespace OkamiIndustries
 			}
 			case 3:
 			{
-
+				DrawCredits(BackgroundCredits, BackgroudCreditsPosition, Back, BackSelect, selectMenu);
+				break;
 			}
 			case 4:
 			{

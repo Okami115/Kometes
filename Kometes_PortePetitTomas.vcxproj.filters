@@ -25,6 +25,9 @@
     <Filter Include="SRC\MenuLoop">
       <UniqueIdentifier>{fdebc41c-94d6-4839-9d56-693bf0247e36}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SRC\CreditsLoop">
+      <UniqueIdentifier>{f7394f23-c9f7-49d0-8d88-3a5af67e48bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -44,6 +47,9 @@
     </ClCompile>
     <ClCompile Include="CoreLoop.cpp">
       <Filter>SRC\CoreLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditsLoop.cpp">
+      <Filter>SRC\CreditsLoop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +72,9 @@
     </ClInclude>
     <ClInclude Include="CoreLoop.h">
       <Filter>SRC\CoreLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditsLoop.h">
+      <Filter>SRC\CreditsLoop</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -95,8 +95,6 @@ namespace OkamiIndustries
 
 	void DrawMenu(int selectMenu, Texture2D BackgroundMenu, Vector2 BackgroudMenuPosition,Texture2D PlaySelect, Texture2D Play, Texture2D Options, Texture2D OptionsSelect, Texture2D Credits, Texture2D CreditsSelect, Texture2D Exit, Texture2D ExitSelect)
 	{
-		game.width = static_cast <float>(Play.width);
-		game.height = static_cast <float>(Play.height);
 		DrawTextureEx(BackgroundMenu, BackgroudMenuPosition, 0, 1, WHITE);
 
 		if (selectMenu == 1)
