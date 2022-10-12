@@ -13,12 +13,6 @@
     <Filter Include="SRC\SpaceShip">
       <UniqueIdentifier>{5c30a534-8df7-42ec-91a5-18f8131b121f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SRC\GameLoop">
-      <UniqueIdentifier>{b22ac7fe-03dc-4e15-94c4-f243387faa1c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SRC\Comets">
-      <UniqueIdentifier>{4e257fbb-8dee-4bb7-a271-59008271f5d4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SRC\CoreLoop">
       <UniqueIdentifier>{9332870f-c653-4e9f-857f-fe74b4ceac30}</UniqueIdentifier>
     </Filter>
@@ -27,6 +21,12 @@
     </Filter>
     <Filter Include="SRC\CreditsLoop">
       <UniqueIdentifier>{f7394f23-c9f7-49d0-8d88-3a5af67e48bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SRC\Comets">
+      <UniqueIdentifier>{4e257fbb-8dee-4bb7-a271-59008271f5d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SRC\GameLoop">
+      <UniqueIdentifier>{b22ac7fe-03dc-4e15-94c4-f243387faa1c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

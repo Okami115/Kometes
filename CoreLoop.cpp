@@ -12,13 +12,14 @@
 
 namespace OkamiIndustries
 {
+	int selectMenu = 0;
+	int setLoop = 0;
+
 	void initGame()
 	{
-		int selectMenu = 0;
-		int setLoop = 0;
 
-		const int screenWidth = 1920;
-		const int screenHeight = 1080;
+		const int screenWidth = 1024;
+		const int screenHeight = 768;
 
 		SetRandomSeed(NULL);
 
@@ -34,11 +35,12 @@ namespace OkamiIndustries
 		SpaceShip.width = SpaceShip.width / 2;
 		SpaceShip.height = SpaceShip.height / 2;
 
+		Texture2D banner = LoadTexture("assets/Banner.png");
 		Texture2D Background = LoadTexture("assets/Background.png");
 		Vector2 BackgroudPosition = { 0, 0 };
 
-		Texture2D BackgroundMenu = LoadTexture("assets/BackgroundMenu.png");
-		Vector2 BackgroudMenuPosition = { 0, 0 };
+		Texture2D BackgroundMenu = LoadTexture("assets/BackgroundMenu768.png");
+		Vector2 BackgroudMenuPosition = { -150, 0 };
 		Texture2D Play = LoadTexture("assets/playNotSelect.png");
 		Texture2D PlaySelect = LoadTexture("assets/PlaySelect.png");
 		Texture2D options = LoadTexture("assets/OptionsNotSelect.png");;
@@ -48,8 +50,8 @@ namespace OkamiIndustries
 		Texture2D exit = LoadTexture("assets/ExitNotSelect.png");
 		Texture2D exitSelect = LoadTexture("assets/ExitSelect.png");
 
-		Texture2D BackgroundCredits = LoadTexture("assets/BackgroundCredits.png");
-		Vector2 BackgroudCreditsPosition = { 0, 0 };
+		Texture2D BackgroundCredits = LoadTexture("assets/BackgroundCredits768.png");
+		Vector2 BackgroudCreditsPosition = { -190, 0 };
 		Texture2D Back = LoadTexture("assets/BackNotSelect.png");
 		Texture2D BackSelect = LoadTexture("assets/BackSelect.png");
 
@@ -66,7 +68,6 @@ namespace OkamiIndustries
 
 		while (!WindowShouldClose())
 		{
-			std::cout << setLoop << std::endl;
 
 			switch (setLoop)
 			{
@@ -109,7 +110,7 @@ namespace OkamiIndustries
 			}
 			case 1:
 			{
-				DrawGame(Background, BackgroudPosition, SpaceShip, SmallComets, MidComets, BigComets, asteroidsCounter);
+				DrawGame(Background, BackgroudPosition, SpaceShip, SmallComets, MidComets, BigComets, banner);
 				break;
 			}
 			case 2:

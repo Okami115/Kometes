@@ -11,12 +11,17 @@ namespace OkamiIndustries
 	float aceleration = 500;
 	int asteroidsCounter = 0;
 
+	int ShootInpact = 1;
+	int score = 0;
+
 	Comets comets[100];
 	extern Circle bullet[100];
 
 	void spawnComets()
 	{
-		for (int i = 0; i < 10; i++)
+		ShootInpact = 1;
+		score = 0;
+		for (int i = 0; i < 2; i++)
 		{
 			asteroidsCounter++;
 			comets[i].cometsCollider.Position.x = static_cast <float>(rand() % GetScreenWidth());
@@ -36,7 +41,7 @@ namespace OkamiIndustries
 			}
 			else if (comets[i].typeComets == (int)BigComets)
 			{
-				comets[i].cometsCollider.Radius = 60;
+				comets[i].cometsCollider.Radius = 40;
 			}
 			
 		}
@@ -65,7 +70,8 @@ namespace OkamiIndustries
 					bullet[j].Position.x = -100;
 					bullet[j].Position.y = -100;
 					PlaySound(boom);
-
+					ShootInpact++;
+					score++;
 					if (comets[i].typeComets == (int)SmallComets)
 					{
 						comets[i].cometsCollider.Position.x = static_cast <float>(rand() % GetScreenWidth());
@@ -85,7 +91,7 @@ namespace OkamiIndustries
 						}
 						else if (comets[i].typeComets == (int)BigComets)
 						{
-							comets[i].cometsCollider.Radius = 60;
+							comets[i].cometsCollider.Radius = 40;
 						}
 					}
 					else if (comets[i].typeComets == (int)MidComets)

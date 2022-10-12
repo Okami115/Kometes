@@ -35,8 +35,6 @@ namespace OkamiIndustries
 		{
 			selectMenu = 3;
 		}
-
-		std::cout << setLoop << std::endl;
 	}
 
 	void DrawCredits(Texture2D BackgroundCredits, Vector2 BackgroudCreditsPosition, Texture2D Back, Texture2D BackSelect, int selectMenu)

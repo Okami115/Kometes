@@ -25,15 +25,18 @@ namespace OkamiIndustries
     bool isBulletTravelling[maxAmmo];
     Vector2 trayectory[maxAmmo];
     int currentBullet = 0;
+    int totalShoots = 1;
 
     float rotated = 0;
 
     extern int asteroidsCounter;
+    extern int setLoop;
     extern Comets comets[100];
 
     void spawnShip()
     {
-        shipPosition = { (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 };
+        totalShoots = 1;
+        shipPosition = { static_cast <float>(GetScreenWidth()) / 2, static_cast <float>(GetScreenHeight()) / 2 };
         lives = 3;
         isShipTravelling = false;
         trayectoryShip = { 0, 0 };
@@ -41,6 +44,8 @@ namespace OkamiIndustries
 
     void initBullets()
     {
+        currentBullet = 0;
+
         for (int i = 0; i < maxAmmo; i++)
         {
             bullet[i] = { Vector2 {-100, -100}, 4 };
@@ -86,7 +91,13 @@ namespace OkamiIndustries
         {
             if (CheckCollision(SpaceShipColider, comets[i].cometsCollider))
             {
+                totalShoots = 1;
                 lives--;
+                if (lives == 0)
+                {
+                    setLoop = 0;
+                    lives = 3;
+                }
                 PlaySound(Hit);
                 shipPosition = { (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 };
                 isShipTravelling = false;
@@ -112,8 +123,6 @@ namespace OkamiIndustries
             }
             shipPosition.x -= trayectoryShip.x * spaceShipAceleration * GetFrameTime();
             shipPosition.y -= trayectoryShip.y * spaceShipAceleration * GetFrameTime();
-
-            std::cout << spaceShipAceleration << std::endl;
 
             if (shipPosition.x > static_cast <float>(GetScreenWidth()))
             {
@@ -146,6 +155,7 @@ namespace OkamiIndustries
             bullet[currentBullet].Position.x = shipPosition.x;
             bullet[currentBullet].Position.y = shipPosition.y;
             currentBullet++;
+            totalShoots++;
             PlaySound(Shoot);
             if (currentBullet >= maxAmmo)
             {
