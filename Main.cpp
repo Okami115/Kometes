@@ -1,9 +1,9 @@
-#include "GameLoop.h"
+#include "CoreLoop.h"
 
 
 
 
 int main()
 {
-	OkamiIndustries::gameloop();
+	OkamiIndustries::initGame();
 }

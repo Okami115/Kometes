@@ -10,5 +10,6 @@ namespace OkamiIndustries
 		int Radius;
 	};
 
-	void gameloop();
+	void gameloop(Sound Hit, Sound Shoot, Sound boom);
+	void DrawGame(Texture2D Background, Vector2 BackgroudPosition, Texture2D SpaceShip, Texture2D SmallComets, Texture2D MidComets, Texture2D BigComets, int asteroidsCounter);
 }

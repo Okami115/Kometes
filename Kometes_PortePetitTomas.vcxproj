@@ -184,6 +184,7 @@ XCOPY "$(ProyectDir)assets" "$(SolutionDir)bin\$(Platform)\$(Configuration)\asse
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Comets.cpp" />
+    <ClCompile Include="CoreLoop.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -194,6 +195,7 @@ XCOPY "$(ProyectDir)assets" "$(SolutionDir)bin\$(Platform)\$(Configuration)\asse
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Comets.h" />
+    <ClInclude Include="CoreLoop.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="SpaceShip.h" />
