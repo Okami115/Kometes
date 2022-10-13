@@ -34,6 +34,12 @@
     <Filter Include="SRC\PowerUps">
       <UniqueIdentifier>{e4372840-28f7-45a3-b6ba-30d74e7f41ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SRC\Hunter">
+      <UniqueIdentifier>{7914d968-0406-4844-8aa9-198cc0a03c86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SRC\HowToPlayLoop">
+      <UniqueIdentifier>{00b53c00-5456-4789-a837-fa908741b37e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -62,6 +68,12 @@
     </ClCompile>
     <ClCompile Include="PowerUpsLoop.cpp">
       <Filter>SRC\PowerUps</Filter>
+    </ClCompile>
+    <ClCompile Include="Hunter.cpp">
+      <Filter>SRC\Hunter</Filter>
+    </ClCompile>
+    <ClCompile Include="HowToPlayLoop.cpp">
+      <Filter>SRC\HowToPlayLoop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +105,12 @@
     </ClInclude>
     <ClInclude Include="PowerUpsLoop.h">
       <Filter>SRC\PowerUps</Filter>
+    </ClInclude>
+    <ClInclude Include="Hunter.h">
+      <Filter>SRC\Hunter</Filter>
+    </ClInclude>
+    <ClInclude Include="HowToPlay.h">
+      <Filter>SRC\HowToPlayLoop</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -188,6 +188,8 @@ XCOPY "$(ProyectDir)assets" "$(SolutionDir)bin\$(Platform)\$(Configuration)\asse
     <ClCompile Include="CreditsLoop.cpp" />
     <ClCompile Include="ExitLoop.cpp" />
     <ClCompile Include="GameLoop.cpp" />
+    <ClCompile Include="HowToPlayLoop.cpp" />
+    <ClCompile Include="Hunter.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="PowerUpsLoop.cpp" />
@@ -202,6 +204,8 @@ XCOPY "$(ProyectDir)assets" "$(SolutionDir)bin\$(Platform)\$(Configuration)\asse
     <ClInclude Include="CreditsLoop.h" />
     <ClInclude Include="ExitLoop.h" />
     <ClInclude Include="GameLoop.h" />
+    <ClInclude Include="HowToPlay.h" />
+    <ClInclude Include="Hunter.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="PowerUpsLoop.h" />
     <ClInclude Include="SpaceShip.h" />

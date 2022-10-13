@@ -3,27 +3,40 @@
 
 namespace OkamiIndustries
 {
-	Rectangle gameButtom;
-	Vector2 gameOrigin;
-	Vector2 gamePos;
+	static Rectangle gameButtom;
+	static Vector2 gameOrigin;
+	static Vector2 gamePos;
 
-	Rectangle options;
-	Vector2 optionsOrigin;
-	Vector2 optionsPos;
+	static Rectangle HowToPlayButtom;
+	static Vector2 HowToPlayOrigin;
+	static Vector2 HowToPlayPos;
 
-	Rectangle credits;
-	Vector2 creditsOrigin;
-	Vector2 creditsPos;
+	static Rectangle creditsButtom;
+	static Vector2 creditsOrigin;
+	static Vector2 creditsPos;
 
-	Rectangle exit;
-	Vector2 exitOrigin;
-	Vector2 exitPos;
+	static Rectangle exitButtom;
+	static Vector2 exitOrigin;
+	static Vector2 exitPos;
+
+	extern int selectMenu;
+	extern int setLoop;
+	extern Texture2D BackgroundMenu;
+	extern Vector2 BackgroudMenuPosition;	
+	extern Texture2D PlaySelect;
+	extern Texture2D Play;
+	extern Texture2D HowToPlay;
+	extern Texture2D HowToPlaySelect;
+	extern Texture2D credits;
+	extern Texture2D creditsSelect;
+	extern Texture2D exit;
+	extern Texture2D exitSelect;
 
 	extern Texture2D Cursor;
 
 	static Circle Mouse;
 
-	void LoopMenu(int& selectMenu, int& setLoop)
+	void LoopMenu()
 	{
 		HideCursor();
 		Mouse.Position.x = GetMousePosition().x;
@@ -37,26 +50,26 @@ namespace OkamiIndustries
 		gameOrigin = { 0, 0};
 		gamePos = { gameButtom.x, gameButtom.y };
 
-		options.x = (static_cast <float>(GetScreenWidth()) / 2) - options.width / 2;
-		options.y = static_cast <float>(GetScreenHeight()) / 2.1f;
-		options.width = 500;
-		options.height = 100;
-		optionsOrigin = { 0 , 0 };
-		optionsPos = { options.x, options.y };
+		HowToPlayButtom.x = (static_cast <float>(GetScreenWidth()) / 2) - HowToPlayButtom.width / 2;
+		HowToPlayButtom.y = static_cast <float>(GetScreenHeight()) / 2.1f;
+		HowToPlayButtom.width = 500;
+		HowToPlayButtom.height = 100;
+		HowToPlayOrigin = { 0 , 0 };
+		HowToPlayPos = { HowToPlayButtom.x, HowToPlayButtom.y };
 
-		credits.x = (static_cast <float>(GetScreenWidth()) / 2) - credits.width / 2;
-		credits.y = static_cast <float>(GetScreenHeight()) / 1.6f;
-		credits.width = 500;
-		credits.height = 100;
+		creditsButtom.x = (static_cast <float>(GetScreenWidth()) / 2) - creditsButtom.width / 2;
+		creditsButtom.y = static_cast <float>(GetScreenHeight()) / 1.6f;
+		creditsButtom.width = 500;
+		creditsButtom.height = 100;
 		creditsOrigin = { 0, 0 };
-		creditsPos = { credits.x, credits.y };
+		creditsPos = { creditsButtom.x, creditsButtom.y };
 
-		exit.x = (static_cast <float>(GetScreenWidth()) / 2) - exit.width / 2;
-		exit.y = static_cast <float>(GetScreenHeight()) / 1.3f;
-		exit.width = 500;
-		exit.height = 100;
+		exitButtom.x = (static_cast <float>(GetScreenWidth()) / 2) - exitButtom.width / 2;
+		exitButtom.y = static_cast <float>(GetScreenHeight()) / 1.3f;
+		exitButtom.width = 500;
+		exitButtom.height = 100;
 		exitOrigin = { 0, 0 };
-		exitPos = { exit.x, exit.y };
+		exitPos = { exitButtom.x, exitButtom.y };
 
 		if (CheckCollisionPointRec(Mouse.Position, gameButtom))
 		{
@@ -67,7 +80,7 @@ namespace OkamiIndustries
 			}
 		}
 
-		if (CheckCollisionCircleRec(Mouse.Position, static_cast <float>(Mouse.Radius), options))
+		if (CheckCollisionCircleRec(Mouse.Position, static_cast <float>(Mouse.Radius), HowToPlayButtom))
 		{
 			selectMenu = 2;
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
@@ -76,7 +89,7 @@ namespace OkamiIndustries
 			}
 		}
 
-		if (CheckCollisionCircleRec(Mouse.Position, static_cast <float>(Mouse.Radius), credits))
+		if (CheckCollisionCircleRec(Mouse.Position, static_cast <float>(Mouse.Radius), creditsButtom))
 		{
 			selectMenu = 3;
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
@@ -85,7 +98,7 @@ namespace OkamiIndustries
 			}
 		}
 
-		if (CheckCollisionCircleRec(Mouse.Position, static_cast <float>(Mouse.Radius), exit))
+		if (CheckCollisionCircleRec(Mouse.Position, static_cast <float>(Mouse.Radius), exitButtom))
 		{
 			selectMenu = 4;
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
@@ -96,7 +109,7 @@ namespace OkamiIndustries
 
 	}
 
-	void DrawMenu(int selectMenu, Texture2D BackgroundMenu, Vector2 BackgroudMenuPosition,Texture2D PlaySelect, Texture2D Play, Texture2D Options, Texture2D OptionsSelect, Texture2D Credits, Texture2D CreditsSelect, Texture2D Exit, Texture2D ExitSelect)
+	void DrawMenu()
 	{
 		DrawTextureEx(BackgroundMenu, BackgroudMenuPosition, 0, 1, WHITE);
 
@@ -111,29 +124,29 @@ namespace OkamiIndustries
 
 		if (selectMenu == 2)
 		{
-			DrawTextureEx(OptionsSelect, optionsPos, 0, 1, WHITE);
+			DrawTextureEx(HowToPlaySelect, HowToPlayPos, 0, 1, WHITE);
 		}
 		else
 		{
-			DrawTextureEx(Options, optionsPos, 0, 1, WHITE);
+			DrawTextureEx(HowToPlay, HowToPlayPos, 0, 1, WHITE);
 		}
 
 		if(selectMenu == 3)
 		{
-			DrawTextureEx(CreditsSelect, creditsPos, 0, 1, WHITE);
+			DrawTextureEx(creditsSelect, creditsPos, 0, 1, WHITE);
 		}
 		else
 		{
-			DrawTextureEx(Credits, creditsPos, 0, 1, WHITE);
+			DrawTextureEx(credits, creditsPos, 0, 1, WHITE);
 		}
 
 		if (selectMenu == 4)
 		{
-			DrawTextureEx(ExitSelect, exitPos, 0, 1, WHITE);
+			DrawTextureEx(exitSelect, exitPos, 0, 1, WHITE);
 		}
 		else
 		{ 
-			DrawTextureEx(Exit, exitPos, 0, 1, WHITE);
+			DrawTextureEx(exit, exitPos, 0, 1, WHITE);
 		}
 		DrawTextureEx(Cursor, Mouse.Position, 0, 1, WHITE);
 	}

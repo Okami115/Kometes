@@ -2,6 +2,7 @@
 #include "raymath.h"
 #include "SpaceShip.h"
 #include "Comets.h"
+#include "Hunter.h"
 #include "GameLoop.h"
 #include "PowerUpsLoop.h"
 #include <iostream> 
@@ -48,6 +49,8 @@ namespace OkamiIndustries
     static Circle Mouse;
     extern Texture2D Sight;
     extern Texture2D Cursor;
+
+    extern Texture2D boomAnimation;
 
     extern int asteroidsCounter;
     extern int ShootInpact;
@@ -101,6 +104,7 @@ namespace OkamiIndustries
             MoveSpaceShip(Shoot, Hit);
             accurancy = (ShootInpact * 100) / totalShoots;
             MoveComets(Boom);
+            HunterLoop();
             PowerUpsLoop();
             if (CheckCollisionPointRec(Mouse.Position, pauseButton))
             {
@@ -140,6 +144,7 @@ namespace OkamiIndustries
                     isFullAutoActive = false;
                     AutoCounter = 0;
                     destroyComets();
+                    DestroyHunter();
                     setLoop = 0;
                 }
             }
@@ -166,6 +171,7 @@ namespace OkamiIndustries
                     isFullAutoActive = false;
                     AutoCounter = 0;
                     destroyComets();
+                    DestroyHunter();
                     setLoop = 0;
                 }
             }
@@ -178,12 +184,12 @@ namespace OkamiIndustries
 
     void DrawGame()
     {
-
         DrawTextureEx(Background, BackgroudPosition, 0, 1, WHITE);
 
         DrawSpaceShip(SpaceShip);
 
         DrawComets();
+        DrawHunter();
 
         DrawBullets();
 
@@ -249,6 +255,7 @@ namespace OkamiIndustries
             DrawTextureEx(Sight, Mouse.Position, 0, 1, WHITE);
 
         }
+
 
     }
 }

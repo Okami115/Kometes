@@ -1,8 +1,8 @@
-﻿  GameLoop.cpp
+﻿  Comets.cpp
   Generando código
-  2 of 35 functions ( 5.7%) were compiled, the rest were copied from previous compilation.
+  9 of 42 functions (21.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    2 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
 raylib.lib(raudio.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'raylib.lib(raudio.obj)' o en 'C:\Users\tomas\Desktop\Kometes\bin\Win32\Release\raylib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 raylib.lib(rcore.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'raylib.lib(rcore.obj)' o en 'C:\Users\tomas\Desktop\Kometes\bin\Win32\Release\raylib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
@@ -30,6 +30,7 @@ raylib.lib(utils.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'r
   assets\Banner.png
   assets\Big Comets.png
   assets\Boom.wav
+  assets\boomAnimation.png
   assets\CancelNotSelect.png
   assets\CancelSelect.png
   assets\Comets Small.png
@@ -41,6 +42,7 @@ raylib.lib(utils.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'r
   assets\FullAuto.png
   assets\FullAuto.wav
   assets\Hit.wav
+  assets\Hunter.png
   assets\Kaboom.png
   assets\Kaboom.wav
   assets\MId Comets.png
@@ -56,4 +58,4 @@ raylib.lib(utils.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'r
   assets\Shoot.wav
   assets\Sight.png
   assets\SpaceShip.png
-  38 archivo(s) copiado(s)
+  40 archivo(s) copiado(s)

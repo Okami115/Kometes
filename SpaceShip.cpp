@@ -3,6 +3,7 @@
 #include "SpaceShip.h"
 #include "GameLoop.h"
 #include "Comets.h"
+#include "Hunter.h"
 #include <iostream> 
 
 namespace OkamiIndustries
@@ -32,6 +33,7 @@ namespace OkamiIndustries
     extern int asteroidsCounter;
     extern int score;
     extern Comets comets[100];
+    extern Hunter hunter;
 
     extern bool isFullAutoActive;
     int AutoCounter = 0;
@@ -103,6 +105,16 @@ namespace OkamiIndustries
                 destroyComets();
             }
 
+        }
+
+        if (CheckCollision(SpaceShipColider, hunter.hunterCollider))
+        {
+            lives--;
+            totalShoots = 1;
+            PlaySound(Hit);
+            shipPosition = { static_cast <float>(GetScreenWidth()) / 2, static_cast <float>(GetScreenHeight()) / 2 };
+            isShipTravelling = false;
+            destroyComets();
         }
 
         if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))

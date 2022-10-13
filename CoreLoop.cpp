@@ -2,8 +2,10 @@
 #include "raylib.h"
 #include "raymath.h"
 #include "SpaceShip.h"
+#include "Hunter.h"
 #include "Comets.h"
 #include "GameLoop.h"
+#include "HowToPlay.h"
 #include "PowerUpsLoop.h"
 #include "ExitLoop.h"
 #include "CreditsLoop.h"
@@ -21,10 +23,11 @@ namespace OkamiIndustries
 
 	bool isGameActive = true;
 
-	const int screenWidth = 1024;
-	const int screenHeight = 768;
+	int screenWidth = 1024;
+	int screenHeight = 768;
 
 	Vector2 BackgroudPosition = { 0, 0 };
+	Vector2 BackgroudHowToPlayPosition = { 0, 0 };
 	Vector2 BackgroudMenuPosition = { -150, 0 };
 	Vector2 BackgroudCreditsPosition = { -190, 0 };
 	
@@ -37,17 +40,18 @@ namespace OkamiIndustries
 
 	Texture2D SpaceShip;
 
+	Texture2D boomAnimation;
+
 	Texture2D banner;
 	Texture2D Background;
 	Texture2D BackgroundMenu;
 	Texture2D BackgroundCredits;
+	Texture2D BackgroundHowToPlay;
 	
 	Texture2D PauseMenu;
 
 	Texture2D Play;
 	Texture2D PlaySelect;
-	Texture2D options;
-	Texture2D optionsSelect;
 	Texture2D credits;
 	Texture2D creditsSelect;
 	Texture2D exit;
@@ -62,6 +66,8 @@ namespace OkamiIndustries
 	Texture2D ResumeSelect;
 	Texture2D Cancel;
 	Texture2D CancelSelect;
+	Texture2D HowToPlay;
+	Texture2D HowToPlaySelect;
 
 	Texture2D KaboomTexture;
 	Texture2D FullAutoTexture;
@@ -72,19 +78,19 @@ namespace OkamiIndustries
 	Texture2D SmallCometsTexture;
 	Texture2D MidCometsTexture;
 	Texture2D BigCometsTexture;
+	Texture2D HunterTexture;
 #pragma endregion
 
-	static void initWin()
+	void initWin()
 	{
 		SetRandomSeed(NULL);
 
-		InitWindow(screenWidth, screenHeight, "OkamiIndustries T - 03 || Kometes || V0.25");
+		InitWindow(screenWidth, screenHeight, "OkamiIndustries T - 03 || Kometes || V0.30");
 
 		InitAudioDevice();
-
 	}
 
-	static void LoadGame()
+	void LoadGame()
 	{
 		Shoot = LoadSound("assets/Shoot.wav");
 		Boom = LoadSound("assets/boom.wav");
@@ -94,15 +100,16 @@ namespace OkamiIndustries
 
 		SpaceShip = LoadTexture("assets/SpaceShip.png");
 
+		boomAnimation = LoadTexture("assets/boomAnimation.png");
+
 		banner = LoadTexture("assets/Banner.png");
 		Background = LoadTexture("assets/Background.png");
+		BackgroundHowToPlay = LoadTexture("assets/BackgroundHowToPlay768.png");
 		BackgroundMenu = LoadTexture("assets/BackgroundMenu768.png");
 		BackgroundCredits = LoadTexture("assets/BackgroundCredits768.png");
 
 		Play = LoadTexture("assets/playNotSelect.png");
 		PlaySelect = LoadTexture("assets/PlaySelect.png");
-		options = LoadTexture("assets/OptionsNotSelect.png");
-		optionsSelect = LoadTexture("assets/OptionsSelect.png");
 		credits = LoadTexture("assets/CreditsNotSelect.png");
 		creditsSelect = LoadTexture("assets/CreditsSelect.png");
 		exit = LoadTexture("assets/ExitNotSelect.png");
@@ -118,6 +125,8 @@ namespace OkamiIndustries
 		ResumeSelect = LoadTexture("assets/ResumeSelect.png");
 		Cancel = LoadTexture("assets/CancelNotSelect.png");
 		CancelSelect = LoadTexture("assets/CancelSelect.png");
+		HowToPlay = LoadTexture("assets/HowToPlayNotSelect.png");
+		HowToPlaySelect = LoadTexture("assets/HowToPlaySelect.png");
 
 		KaboomTexture = LoadTexture("assets/Kaboom.png");
 		FullAutoTexture = LoadTexture("assets/FullAuto.png");
@@ -128,25 +137,27 @@ namespace OkamiIndustries
 		SmallCometsTexture = LoadTexture("assets/Comets Small.png");
 		MidCometsTexture = LoadTexture("assets/Mid Comets.png");
 		BigCometsTexture = LoadTexture("assets/Big Comets.png");
+		HunterTexture = LoadTexture("assets/Hunter.png");
 
 		SpaceShip.width = SpaceShip.width / 2;
 		SpaceShip.height = SpaceShip.height / 2;
 	}
 
-	static void closeWindow()
+	void closeWindow()
 	{
 		UnloadTexture(SpaceShip);
 
+		UnloadTexture(boomAnimation);
+
 		UnloadTexture(banner);
 		UnloadTexture(Background);
+		UnloadTexture(BackgroundHowToPlay);
 		UnloadTexture(BackgroundMenu);
 		UnloadTexture(BackgroundCredits);
 
 		UnloadTexture(PauseMenu);
 		UnloadTexture(Play);
 		UnloadTexture(PlaySelect);
-		UnloadTexture(options);
-		UnloadTexture(optionsSelect);
 		UnloadTexture(credits);
 		UnloadTexture(creditsSelect);
 		UnloadTexture(exit);
@@ -161,6 +172,8 @@ namespace OkamiIndustries
 		UnloadTexture(ResumeSelect);
 		UnloadTexture(Cancel);
 		UnloadTexture(CancelSelect);
+		UnloadTexture(HowToPlay);
+		UnloadTexture(HowToPlaySelect);
 
 		UnloadTexture(KaboomTexture);
 		UnloadTexture(FullAutoTexture);
@@ -171,6 +184,7 @@ namespace OkamiIndustries
 		UnloadTexture(SmallCometsTexture);
 		UnloadTexture(MidCometsTexture);
 		UnloadTexture(BigCometsTexture);
+		UnloadTexture(HunterTexture);
 
 		UnloadSound(Boom);
 		UnloadSound(Shoot);
@@ -190,6 +204,7 @@ namespace OkamiIndustries
 		spawnShip();
 		SpawnKaboom();
 		SpawnFullAuto();
+		SpawnHunter();
 
 		extern int asteroidsCounter;
 
@@ -198,12 +213,11 @@ namespace OkamiIndustries
 
 		while (!WindowShouldClose() && isGameActive)
 		{
-
 			switch (setLoop)
 			{
 			case 0:
 			{
-				LoopMenu(selectMenu, setLoop);
+				LoopMenu();
 				break;
 			}
 			case 1:
@@ -213,7 +227,8 @@ namespace OkamiIndustries
 			}
 			case 2:
 			{
-				
+				HowToPlayLoop();
+				break;
 			}
 			case 3:
 			{
@@ -235,7 +250,7 @@ namespace OkamiIndustries
 			{
 			case 0:
 			{
-				DrawMenu(selectMenu,BackgroundMenu, BackgroudMenuPosition, PlaySelect, Play, options, optionsSelect,credits, creditsSelect, exit, exitSelect);
+				DrawMenu();
 				break;
 			}
 			case 1:
@@ -245,7 +260,8 @@ namespace OkamiIndustries
 			}
 			case 2:
 			{
-
+				DrawHowToPlay();
+				break;
 			}
 			case 3:
 			{
@@ -261,6 +277,7 @@ namespace OkamiIndustries
 				break;
 			}
 			EndDrawing();
+
 		}
 
 
