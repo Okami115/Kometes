@@ -19,7 +19,7 @@ namespace OkamiIndustries
 	Vector2 exitOrigin;
 	Vector2 exitPos;
 
-	Circle Mouse;
+	static Circle Mouse;
 
 	void LoopMenu(int& selectMenu, int& setLoop)
 	{

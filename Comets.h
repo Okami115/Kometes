@@ -21,7 +21,7 @@ namespace OkamiIndustries
 	void MoveComets(Sound boom);
 	void spawnComets();
 	void destroyComets();
-	void DrawComets(Texture2D SmallSprite, Texture2D MidSprite, Texture2D BigSprite);
+	void DrawComets();
 
 }
 
