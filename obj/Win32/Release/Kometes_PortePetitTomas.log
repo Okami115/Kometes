@@ -1,15 +1,10 @@
-﻿  Comets.cpp
-  CoreLoop.cpp
-  CreditsLoop.cpp
-  GameLoop.cpp
-  Main.cpp
-  Menu.cpp
-  SpaceShip.cpp
+﻿  GameLoop.cpp
   Generando código
-  Previous IPDB not found, fall back to full compilation.
-  All 26 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  2 of 35 functions ( 5.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
-raylib.lib(raudio.obj) : warning LNK4099: no se encontró PDB '' con 'raylib.lib(raudio.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+raylib.lib(raudio.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'raylib.lib(raudio.obj)' o en 'C:\Users\tomas\Desktop\Kometes\bin\Win32\Release\raylib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 raylib.lib(rcore.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'raylib.lib(rcore.obj)' o en 'C:\Users\tomas\Desktop\Kometes\bin\Win32\Release\raylib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 raylib.lib(rglfw.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'raylib.lib(rglfw.obj)' o en 'C:\Users\tomas\Desktop\Kometes\bin\Win32\Release\raylib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 raylib.lib(rshapes.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'raylib.lib(rshapes.obj)' o en 'C:\Users\tomas\Desktop\Kometes\bin\Win32\Release\raylib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
@@ -28,17 +23,26 @@ raylib.lib(utils.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'r
   assets\BackgroundCredits768.png
   assets\BackgroundMenu.png
   assets\BackgroundMenu768.png
+  assets\BackMenuNotSelect.png
+  assets\BackMenuSelect.png
   assets\BackNotSelect.png
   assets\BackSelect.png
   assets\Banner.png
   assets\Big Comets.png
   assets\Boom.wav
+  assets\CancelNotSelect.png
+  assets\CancelSelect.png
   assets\Comets Small.png
   assets\CreditsNotSelect.png
   assets\CreditsSelect.png
+  assets\Cursor.png
   assets\ExitNotSelect.png
   assets\ExitSelect.png
+  assets\FullAuto.png
+  assets\FullAuto.wav
   assets\Hit.wav
+  assets\Kaboom.png
+  assets\Kaboom.wav
   assets\MId Comets.png
   assets\OptionsNotSelect.png
   assets\OptionsSelect.png
@@ -47,6 +51,9 @@ raylib.lib(utils.obj) : warning LNK4099: no se encontró PDB 'raylib.pdb' con 'r
   assets\PauseSelect.png
   assets\PlayNotSelect.png
   assets\PlaySelect.png
+  assets\ResumeNotSelect.png
+  assets\ResumeSelect.png
   assets\Shoot.wav
+  assets\Sight.png
   assets\SpaceShip.png
-  26 archivo(s) copiado(s)
+  38 archivo(s) copiado(s)

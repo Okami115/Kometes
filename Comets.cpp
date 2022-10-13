@@ -11,8 +11,8 @@ namespace OkamiIndustries
 	extern Texture2D BigCometsTexture;
 
 	static int maxComets = 10;
-	float cometsSpeed = 1.0f;
-	float aceleration = 500;
+	static float cometsSpeed = 1.0f;
+	static float aceleration = 500;
 	int asteroidsCounter = 0;
 
 	int ShootInpact = 1;

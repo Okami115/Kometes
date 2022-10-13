@@ -3,6 +3,7 @@
 #include "SpaceShip.h"
 #include "Comets.h"
 #include "GameLoop.h"
+#include "PowerUpsLoop.h"
 #include <iostream> 
 #include <time.h> 
 #include "menu.h"
@@ -45,12 +46,19 @@ namespace OkamiIndustries
     Vector2 bannerPos = { bannerRec.x, bannerRec.y };
 
     static Circle Mouse;
+    extern Texture2D Sight;
+    extern Texture2D Cursor;
 
     extern int asteroidsCounter;
     extern int ShootInpact;
     extern int totalShoots;
     extern int lives;
     extern int score;
+    extern int AutoCounter;
+    extern bool isFullAutoActive;
+
+    extern float timerKaboom;
+    extern float timerFullAuto;
 
     extern int setLoop;
 
@@ -59,9 +67,9 @@ namespace OkamiIndustries
 
     int accurancy = 1;
 
-
     void gameloop()
     {
+        HideCursor();
         pauseButton.x = (static_cast <float>(GetScreenWidth()) / 2) - pauseButton.width / 2;
         pauseButton.y = static_cast <float>(GetScreenHeight()) / 1.2f;
         pauseButton.width = 500;
@@ -84,15 +92,16 @@ namespace OkamiIndustries
         resumePos = { resumeButton.x, resumeButton.y };
 
 
-        Mouse.Position.x = GetMousePosition().x;
-        Mouse.Position.y = GetMousePosition().y + 20;
+        Mouse.Position.x = GetMousePosition().x - Sight.width / 2;
+        Mouse.Position.y = GetMousePosition().y - Sight.height / 2;
         Mouse.Radius = 3;
 
-        if (!isPause)
+        if (!isPause && lives > 0)
         {
             MoveSpaceShip(Shoot, Hit);
             accurancy = (ShootInpact * 100) / totalShoots;
             MoveComets(Boom);
+            PowerUpsLoop();
             if (CheckCollisionPointRec(Mouse.Position, pauseButton))
             {
                 selectButtom = 1;
@@ -106,7 +115,7 @@ namespace OkamiIndustries
                 selectButtom = 0;
             }
         }
-        else
+        else if (isPause && lives > 0)
         {
             if (CheckCollisionPointRec(Mouse.Position, resumeButton))
             {
@@ -121,6 +130,16 @@ namespace OkamiIndustries
                 selectButtom = 2;
                 if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
                 {
+                    isPause = false;
+                    score = 0;
+                    lives = 3;
+                    ShootInpact = 1;
+                    totalShoots = 1;
+                    timerKaboom = 0;
+                    timerFullAuto = 0;
+                    isFullAutoActive = false;
+                    AutoCounter = 0;
+                    destroyComets();
                     setLoop = 0;
                 }
             }
@@ -129,6 +148,31 @@ namespace OkamiIndustries
                 selectButtom = 0;
             }
 
+        }
+        else if (lives <= 0)
+        {
+            if (CheckCollisionPointRec(Mouse.Position, backMenuButton))
+            {
+                selectButtom = 4;
+                if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+                {
+                    isPause = false;
+                    score = 0;
+                    lives = 3;
+                    ShootInpact = 1;
+                    totalShoots = 1;
+                    timerKaboom = 0;
+                    timerFullAuto = 0;
+                    isFullAutoActive = false;
+                    AutoCounter = 0;
+                    destroyComets();
+                    setLoop = 0;
+                }
+            }
+            else
+            {
+                selectButtom = 0;
+            }
         }
     }
 
@@ -142,6 +186,8 @@ namespace OkamiIndustries
         DrawComets();
 
         DrawBullets();
+
+        DrawPowerUps();
 
         if (selectButtom == 1)
         {
@@ -163,7 +209,7 @@ namespace OkamiIndustries
             
             PauseMenuPos = {(static_cast <float>(GetScreenWidth()) / 2) - PauseMenu.width / 2, (static_cast <float>(GetScreenHeight()) / 2) - PauseMenu.height / 2,};
             DrawTextureEx(PauseMenu, PauseMenuPos, 0, 1, WHITE);
-            DrawText("PAUSE", GetScreenWidth() / 2 - 80, GetScreenHeight() / 4, 50, BLACK);
+            DrawText("PAUSE", static_cast <int>(PauseMenuPos.x) + 115, static_cast <int>(PauseMenuPos.y) + 50, 50, BLACK);
             if (selectButtom == 2)
             {
                 DrawTextureEx(BackMenuSelect, backMenuPos, 0, 1, WHITE);
@@ -180,7 +226,29 @@ namespace OkamiIndustries
             {
                 DrawTextureEx(Resume, resumePos, 0, 1, WHITE);
             }
-            
+            DrawTextureEx(Cursor, Mouse.Position, 0, 1, WHITE);
         }
+        else if (lives == 0)
+        {
+            PauseMenuPos = { (static_cast <float>(GetScreenWidth()) / 2) - PauseMenu.width / 2, (static_cast <float>(GetScreenHeight()) / 2) - PauseMenu.height / 2, };
+            DrawTextureEx(PauseMenu, PauseMenuPos, 0, 1, WHITE);
+            DrawText("YOU LOSS", static_cast <int>(PauseMenuPos.x) + 80, static_cast <int>(PauseMenuPos.y) + 50, 50, BLACK);
+            DrawText(TextFormat("Score: %06i", score * 100), GetScreenWidth() / 2 - 130, GetScreenHeight() / 2 - 100, 40, BLACK);
+            if (selectButtom == 4)
+            {
+                DrawTextureEx(BackMenuSelect, backMenuPos, 0, 1, WHITE);
+            }
+            else
+            {
+                DrawTextureEx(BackMenu, backMenuPos, 0, 1, WHITE);
+            }
+            DrawTextureEx(Cursor, Mouse.Position, 0, 1, WHITE);
+        }
+        else
+        {
+            DrawTextureEx(Sight, Mouse.Position, 0, 1, WHITE);
+
+        }
+
     }
 }

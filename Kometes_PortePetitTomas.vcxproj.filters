@@ -31,6 +31,9 @@
     <Filter Include="SRC\ExitLoop">
       <UniqueIdentifier>{7c318181-fc5f-4b6c-9796-facb83169ef8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SRC\PowerUps">
+      <UniqueIdentifier>{e4372840-28f7-45a3-b6ba-30d74e7f41ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -56,6 +59,9 @@
     </ClCompile>
     <ClCompile Include="ExitLoop.cpp">
       <Filter>SRC\ExitLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerUpsLoop.cpp">
+      <Filter>SRC\PowerUps</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +90,9 @@
     </ClInclude>
     <ClInclude Include="ExitLoop.h">
       <Filter>SRC\ExitLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerUpsLoop.h">
+      <Filter>SRC\PowerUps</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

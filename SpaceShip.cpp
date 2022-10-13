@@ -33,6 +33,10 @@ namespace OkamiIndustries
     extern int score;
     extern Comets comets[100];
 
+    extern bool isFullAutoActive;
+    int AutoCounter = 0;
+    float timer = 0;
+
     void spawnShip()
     {
         totalShoots = 1;
@@ -93,11 +97,6 @@ namespace OkamiIndustries
             {
                 lives--;
                 totalShoots = 1;
-                if (lives == 0)
-                {
-                    score = 0;
-                    lives = 3;
-                }
                 PlaySound(Hit);
                 shipPosition = { static_cast <float>(GetScreenWidth()) / 2, static_cast <float>(GetScreenHeight()) / 2 };
                 isShipTravelling = false;
@@ -145,18 +144,52 @@ namespace OkamiIndustries
         }
 
         // Shoot
-        if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+        timer += GetFrameTime();
+        if (isFullAutoActive)
         {
-            trayectory[currentBullet] = normalDir;
-            isBulletTravelling[currentBullet] = true;
-            bullet[currentBullet].Position.x = shipPosition.x;
-            bullet[currentBullet].Position.y = shipPosition.y;
-            currentBullet++;
-            totalShoots++;
-            PlaySound(Shoot);
-            if (currentBullet >= maxAmmo)
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
             {
-                currentBullet = 0;
+                if (timer > 0.1f)
+                {
+                    trayectory[currentBullet] = normalDir;
+                    isBulletTravelling[currentBullet] = true;
+                    bullet[currentBullet].Position.x = shipPosition.x;
+                    bullet[currentBullet].Position.y = shipPosition.y;
+                    currentBullet++;
+                    totalShoots++;
+                    AutoCounter++;
+                    if (AutoCounter == 50)
+                    {
+                        isFullAutoActive = false;
+                        AutoCounter = 0;
+                    }
+                    PlaySound(Shoot);
+                    timer = 0;
+                    if (currentBullet >= maxAmmo)
+                    {
+                        currentBullet = 0;
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+            {
+                if (timer > 0.1f)
+                {
+                    trayectory[currentBullet] = normalDir;
+                    isBulletTravelling[currentBullet] = true;
+                    bullet[currentBullet].Position.x = shipPosition.x;
+                    bullet[currentBullet].Position.y = shipPosition.y;
+                    currentBullet++;
+                    totalShoots++;
+                    PlaySound(Shoot);
+                    if (currentBullet >= maxAmmo)
+                    {
+                        currentBullet = 0;
+                    }
+                }
             }
         }
 

@@ -8,6 +8,7 @@ namespace OkamiIndustries
 	Vector2 BackOrigin;
 	Vector2 BackPos;
 
+	extern Texture2D Cursor;
 	static Circle Mouse;
 
 	void CreditsLoop(int& selectMenu, int& setLoop)
@@ -48,7 +49,7 @@ namespace OkamiIndustries
 		{
 			DrawTextureEx(Back, BackPos, 0, 1, WHITE);
 		}
-		DrawCircle(static_cast <int>(Mouse.Position.x), static_cast <int>(Mouse.Position.y), static_cast <float>(Mouse.Radius), YELLOW);
+		DrawTextureEx(Cursor, Mouse.Position, 0, 1, WHITE);
 	}
 
 }

@@ -22,6 +22,8 @@ namespace OkamiIndustries
 	extern Texture2D BackgroundMenu;
 	extern Vector2 BackgroudMenuPosition;
 
+	extern Texture2D Cursor;
+
 	extern int selectMenu;
 	extern int setLoop;
 	extern bool isGameActive;
@@ -29,7 +31,7 @@ namespace OkamiIndustries
 	void ExitLoop()
 	{
 		Mouse.Position.x = GetMousePosition().x;
-		Mouse.Position.y = GetMousePosition().y + 20;
+		Mouse.Position.y = GetMousePosition().y;
 		Mouse.Radius = 3;
 
 		exitButtom.x = (static_cast <float>(GetScreenWidth()) / 4) - exitButtom.width / 2;
@@ -88,7 +90,7 @@ namespace OkamiIndustries
 		{
 			DrawTextureEx(Cancel, cancelButtomPos, 0, 1, WHITE);
 		}
-
+		DrawTextureEx(Cursor, Mouse.Position, 0, 1, WHITE);
 	}
 
 }

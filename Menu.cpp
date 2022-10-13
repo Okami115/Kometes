@@ -19,12 +19,15 @@ namespace OkamiIndustries
 	Vector2 exitOrigin;
 	Vector2 exitPos;
 
+	extern Texture2D Cursor;
+
 	static Circle Mouse;
 
 	void LoopMenu(int& selectMenu, int& setLoop)
 	{
+		HideCursor();
 		Mouse.Position.x = GetMousePosition().x;
-		Mouse.Position.y = GetMousePosition().y + 20;
+		Mouse.Position.y = GetMousePosition().y;
 		Mouse.Radius = 3;
 
 		gameButtom.x = (static_cast <float>(GetScreenWidth()) / 2) - gameButtom.width / 2;
@@ -132,8 +135,7 @@ namespace OkamiIndustries
 		{ 
 			DrawTextureEx(Exit, exitPos, 0, 1, WHITE);
 		}
-
-		DrawCircle(static_cast <int>(Mouse.Position.x), static_cast <int>(Mouse.Position.y), static_cast <float>(Mouse.Radius), YELLOW);
+		DrawTextureEx(Cursor, Mouse.Position, 0, 1, WHITE);
 	}
 	
 

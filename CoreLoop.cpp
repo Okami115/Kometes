@@ -4,6 +4,7 @@
 #include "SpaceShip.h"
 #include "Comets.h"
 #include "GameLoop.h"
+#include "PowerUpsLoop.h"
 #include "ExitLoop.h"
 #include "CreditsLoop.h"
 #include <iostream> 
@@ -31,6 +32,8 @@ namespace OkamiIndustries
 	Sound Shoot;
 	Sound Boom;
 	Sound Hit;
+	Sound KaboomSound;
+	Sound FullAutoSound;
 
 	Texture2D SpaceShip;
 
@@ -60,6 +63,11 @@ namespace OkamiIndustries
 	Texture2D Cancel;
 	Texture2D CancelSelect;
 
+	Texture2D KaboomTexture;
+	Texture2D FullAutoTexture;
+
+	Texture2D Sight;
+	Texture2D Cursor;
 
 	Texture2D SmallCometsTexture;
 	Texture2D MidCometsTexture;
@@ -81,6 +89,8 @@ namespace OkamiIndustries
 		Shoot = LoadSound("assets/Shoot.wav");
 		Boom = LoadSound("assets/boom.wav");
 		Hit = LoadSound("assets/Hit.wav");
+		KaboomSound = LoadSound("assets/Kaboom.wav");
+		FullAutoSound = LoadSound("assets/FullAuto.wav");
 
 		SpaceShip = LoadTexture("assets/SpaceShip.png");
 
@@ -108,6 +118,12 @@ namespace OkamiIndustries
 		ResumeSelect = LoadTexture("assets/ResumeSelect.png");
 		Cancel = LoadTexture("assets/CancelNotSelect.png");
 		CancelSelect = LoadTexture("assets/CancelSelect.png");
+
+		KaboomTexture = LoadTexture("assets/Kaboom.png");
+		FullAutoTexture = LoadTexture("assets/FullAuto.png");
+
+		Sight = LoadTexture("assets/Sight.png");
+		Cursor = LoadTexture("assets/Cursor.png");
 
 		SmallCometsTexture = LoadTexture("assets/Comets Small.png");
 		MidCometsTexture = LoadTexture("assets/Mid Comets.png");
@@ -146,6 +162,12 @@ namespace OkamiIndustries
 		UnloadTexture(Cancel);
 		UnloadTexture(CancelSelect);
 
+		UnloadTexture(KaboomTexture);
+		UnloadTexture(FullAutoTexture);
+
+		UnloadTexture(Sight);
+		UnloadTexture(Cursor);
+
 		UnloadTexture(SmallCometsTexture);
 		UnloadTexture(MidCometsTexture);
 		UnloadTexture(BigCometsTexture);
@@ -153,6 +175,8 @@ namespace OkamiIndustries
 		UnloadSound(Boom);
 		UnloadSound(Shoot);
 		UnloadSound(Hit);
+		UnloadSound(KaboomSound);
+		UnloadSound(FullAutoSound);
 
 		CloseAudioDevice();
 		CloseWindow();
@@ -164,6 +188,8 @@ namespace OkamiIndustries
 		LoadGame();
 		spawnComets();
 		spawnShip();
+		SpawnKaboom();
+		SpawnFullAuto();
 
 		extern int asteroidsCounter;
 

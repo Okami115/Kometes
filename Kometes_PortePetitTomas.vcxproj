@@ -190,6 +190,7 @@ XCOPY "$(ProyectDir)assets" "$(SolutionDir)bin\$(Platform)\$(Configuration)\asse
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="PowerUpsLoop.cpp" />
     <ClCompile Include="SpaceShip.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +203,7 @@ XCOPY "$(ProyectDir)assets" "$(SolutionDir)bin\$(Platform)\$(Configuration)\asse
     <ClInclude Include="ExitLoop.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="PowerUpsLoop.h" />
     <ClInclude Include="SpaceShip.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
