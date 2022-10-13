@@ -29,7 +29,7 @@ namespace OkamiIndustries
 	Vector2 BackgroudPosition = { 0, 0 };
 	Vector2 BackgroudHowToPlayPosition = { 0, 0 };
 	Vector2 BackgroudMenuPosition = { -150, 0 };
-	Vector2 BackgroudCreditsPosition = { -190, 0 };
+	Vector2 BackgroudCreditsPosition = { 0, 0 };
 	
 #pragma region Texture&Sound
 	Sound Shoot;
@@ -37,6 +37,10 @@ namespace OkamiIndustries
 	Sound Hit;
 	Sound KaboomSound;
 	Sound FullAutoSound;
+
+	Music MenuMusic;
+	Music GameMusic;
+
 
 	Texture2D SpaceShip;
 
@@ -97,6 +101,9 @@ namespace OkamiIndustries
 		Hit = LoadSound("assets/Hit.wav");
 		KaboomSound = LoadSound("assets/Kaboom.wav");
 		FullAutoSound = LoadSound("assets/FullAuto.wav");
+
+		MenuMusic = LoadMusicStream("assets/MenuMusic.wav");
+		GameMusic = LoadMusicStream("assets/GameMusic.wav");
 
 		SpaceShip = LoadTexture("assets/SpaceShip.png");
 
@@ -192,6 +199,9 @@ namespace OkamiIndustries
 		UnloadSound(KaboomSound);
 		UnloadSound(FullAutoSound);
 
+		UnloadMusicStream(MenuMusic);
+		UnloadMusicStream(GameMusic);
+
 		CloseAudioDevice();
 		CloseWindow();
 	}
@@ -210,9 +220,29 @@ namespace OkamiIndustries
 
 		initBullets();
 
+		PlayMusicStream(MenuMusic);
+		PlayMusicStream(GameMusic);
+		SetMusicVolume(MenuMusic, 0.01f);
+		SetMusicVolume(GameMusic, 0.01f);
 
 		while (!WindowShouldClose() && isGameActive)
 		{
+			if (setLoop == 1)
+			{
+				PauseMusicStream(MenuMusic); 
+				PlayMusicStream(GameMusic);
+
+			}
+			else
+			{
+				PauseMusicStream(GameMusic);
+				PlayMusicStream(MenuMusic);
+			}
+
+			UpdateMusicStream(GameMusic);
+			UpdateMusicStream(MenuMusic);
+
+
 			switch (setLoop)
 			{
 			case 0:
@@ -222,6 +252,7 @@ namespace OkamiIndustries
 			}
 			case 1:
 			{
+				
 				gameloop();
 				break;
 			}
