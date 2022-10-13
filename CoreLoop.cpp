@@ -4,6 +4,7 @@
 #include "SpaceShip.h"
 #include "Comets.h"
 #include "GameLoop.h"
+#include "ExitLoop.h"
 #include "CreditsLoop.h"
 #include <iostream> 
 #include <time.h> 
@@ -14,6 +15,10 @@ namespace OkamiIndustries
 {
 	int selectMenu = 0;
 	int setLoop = 0;
+
+	int score = 0;
+
+	bool isGameActive = true;
 
 	const int screenWidth = 1024;
 	const int screenHeight = 768;
@@ -33,6 +38,8 @@ namespace OkamiIndustries
 	Texture2D Background;
 	Texture2D BackgroundMenu;
 	Texture2D BackgroundCredits;
+	
+	Texture2D PauseMenu;
 
 	Texture2D Play;
 	Texture2D PlaySelect;
@@ -44,13 +51,14 @@ namespace OkamiIndustries
 	Texture2D exitSelect;
 	Texture2D Back;
 	Texture2D BackSelect;
-	Texture2D PauseMenu;
 	Texture2D Pause;
 	Texture2D PauseSelect;
 	Texture2D BackMenu;
 	Texture2D BackMenuSelect;
 	Texture2D Resume;
 	Texture2D ResumeSelect;
+	Texture2D Cancel;
+	Texture2D CancelSelect;
 
 
 	Texture2D SmallCometsTexture;
@@ -98,6 +106,8 @@ namespace OkamiIndustries
 		BackMenuSelect = LoadTexture("assets/BackMenuSelect.png");
 		Resume = LoadTexture("assets/ResumeNotSelect.png");
 		ResumeSelect = LoadTexture("assets/ResumeSelect.png");
+		Cancel = LoadTexture("assets/CancelNotSelect.png");
+		CancelSelect = LoadTexture("assets/CancelSelect.png");
 
 		SmallCometsTexture = LoadTexture("assets/Comets Small.png");
 		MidCometsTexture = LoadTexture("assets/Mid Comets.png");
@@ -110,10 +120,36 @@ namespace OkamiIndustries
 	static void closeWindow()
 	{
 		UnloadTexture(SpaceShip);
+
+		UnloadTexture(banner);
 		UnloadTexture(Background);
+		UnloadTexture(BackgroundMenu);
+		UnloadTexture(BackgroundCredits);
+
+		UnloadTexture(PauseMenu);
+		UnloadTexture(Play);
+		UnloadTexture(PlaySelect);
+		UnloadTexture(options);
+		UnloadTexture(optionsSelect);
+		UnloadTexture(credits);
+		UnloadTexture(creditsSelect);
+		UnloadTexture(exit);
+		UnloadTexture(exitSelect);
+		UnloadTexture(Back);
+		UnloadTexture(BackSelect);
+		UnloadTexture(Pause);
+		UnloadTexture(PauseSelect);
+		UnloadTexture(BackMenu);
+		UnloadTexture(BackMenuSelect);
+		UnloadTexture(Resume);
+		UnloadTexture(ResumeSelect);
+		UnloadTexture(Cancel);
+		UnloadTexture(CancelSelect);
+
 		UnloadTexture(SmallCometsTexture);
 		UnloadTexture(MidCometsTexture);
 		UnloadTexture(BigCometsTexture);
+
 		UnloadSound(Boom);
 		UnloadSound(Shoot);
 		UnloadSound(Hit);
@@ -134,7 +170,7 @@ namespace OkamiIndustries
 		initBullets();
 
 
-		while (!WindowShouldClose())
+		while (!WindowShouldClose() && isGameActive)
 		{
 
 			switch (setLoop)
@@ -160,14 +196,14 @@ namespace OkamiIndustries
 			}
 			case 4:
 			{
-
+				ExitLoop();
+				break;
 			}
 			default:
 				break;
 			}
 
 			BeginDrawing();
-
 			ClearBackground(BLACK);
 			switch (setLoop)
 			{
@@ -187,17 +223,17 @@ namespace OkamiIndustries
 			}
 			case 3:
 			{
+				
 				DrawCredits(BackgroundCredits, BackgroudCreditsPosition, Back, BackSelect, selectMenu);
 				break;
 			}
 			case 4:
 			{
-
+				DrawExit();
 			}
 			default:
 				break;
 			}
-
 			EndDrawing();
 		}
 

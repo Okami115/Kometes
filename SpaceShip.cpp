@@ -30,7 +30,7 @@ namespace OkamiIndustries
     float rotated = 0;
 
     extern int asteroidsCounter;
-    extern int setLoop;
+    extern int score;
     extern Comets comets[100];
 
     void spawnShip()
@@ -91,15 +91,15 @@ namespace OkamiIndustries
         {
             if (CheckCollision(SpaceShipColider, comets[i].cometsCollider))
             {
-                totalShoots = 1;
                 lives--;
+                totalShoots = 1;
                 if (lives == 0)
                 {
-                    setLoop = 0;
+                    score = 0;
                     lives = 3;
                 }
                 PlaySound(Hit);
-                shipPosition = { (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 };
+                shipPosition = { static_cast <float>(GetScreenWidth()) / 2, static_cast <float>(GetScreenHeight()) / 2 };
                 isShipTravelling = false;
                 destroyComets();
             }
@@ -110,16 +110,14 @@ namespace OkamiIndustries
         {
             trayectoryShip = normalDir;
             isShipTravelling = true;
-
-            
         }
 
         if (isShipTravelling)
         {
             spaceShipAceleration++;
-            if (spaceShipAceleration > 400.0f)
+            if (spaceShipAceleration > 200.0f)
             {
-                spaceShipAceleration = 400.0f;
+                spaceShipAceleration = 200.0f;
             }
             shipPosition.x -= trayectoryShip.x * spaceShipAceleration * GetFrameTime();
             shipPosition.y -= trayectoryShip.y * spaceShipAceleration * GetFrameTime();
@@ -140,7 +138,6 @@ namespace OkamiIndustries
             {
                 shipPosition.y = static_cast <float>(GetScreenHeight());
             }
-
             if (shipPosition.x == trayectoryShip.x && shipPosition.y == trayectoryShip.y)
             {
                 isShipTravelling = false;

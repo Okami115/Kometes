@@ -16,7 +16,7 @@ namespace OkamiIndustries
 	int asteroidsCounter = 0;
 
 	int ShootInpact = 1;
-	int score = 0;
+	extern int score;
 
 	Comets comets[100];
 	extern Circle bullet[100];
@@ -24,7 +24,6 @@ namespace OkamiIndustries
 	void spawnComets()
 	{
 		ShootInpact = 1;
-		score = 0;
 		for (int i = 0; i < 2; i++)
 		{
 			asteroidsCounter++;
@@ -201,7 +200,6 @@ namespace OkamiIndustries
 				Rectangle source = { 0, 0, static_cast <float>(SmallCometsTexture.width), static_cast <float>(SmallCometsTexture.height) };
 				Rectangle dest = { comets[i].cometsCollider.Position.x, comets[i].cometsCollider.Position.y, static_cast <float>(SmallCometsTexture.width), static_cast <float>(SmallCometsTexture.height)};
 				Vector2 origin = { static_cast <float>(SmallCometsTexture.width) / 2, static_cast <float>(SmallCometsTexture.height) / 2 };
-				//DrawRectanglePro(dest, origin, rotation, WHITE);
 				DrawCircle(static_cast <int>(comets[i].cometsCollider.Position.x), static_cast <int>(comets[i].cometsCollider.Position.y), static_cast <float>(comets[i].cometsCollider.Radius), SKYBLUE);
 				DrawTexturePro(SmallCometsTexture,source ,dest, origin, rotation, WHITE);
 			}
@@ -210,7 +208,6 @@ namespace OkamiIndustries
 				Rectangle source = { 0, 0, static_cast <float>(MidCometsTexture.width), static_cast <float>(MidCometsTexture.height) };
 				Rectangle dest = { comets[i].cometsCollider.Position.x, comets[i].cometsCollider.Position.y, static_cast <float>(MidCometsTexture.width), static_cast <float>(MidCometsTexture.height) };
 				Vector2 origin = { static_cast <float>(MidCometsTexture.width) / 2, static_cast <float>(MidCometsTexture.height) / 2 };
-				//DrawRectanglePro(dest, origin, rotation, WHITE);
 				DrawCircle(static_cast <int>(comets[i].cometsCollider.Position.x), static_cast <int>(comets[i].cometsCollider.Position.y), static_cast <float>(comets[i].cometsCollider.Radius), BLUE);
 				DrawTexturePro(MidCometsTexture, source, dest, origin, rotation, WHITE);
 			}
@@ -219,7 +216,6 @@ namespace OkamiIndustries
 				Rectangle source = { 0, 0, static_cast <float>(BigCometsTexture.width), static_cast <float>(BigCometsTexture.height) };
 				Rectangle dest = { comets[i].cometsCollider.Position.x, comets[i].cometsCollider.Position.y, static_cast <float>(BigCometsTexture.width), static_cast <float>(BigCometsTexture.height) };
 				Vector2 origin = { static_cast <float>(BigCometsTexture.width) / 2, static_cast <float>(BigCometsTexture.height) / 2 };
-				//DrawRectanglePro(dest, origin, rotation, WHITE);
 				DrawCircle(static_cast <int>(comets[i].cometsCollider.Position.x), static_cast <int>(comets[i].cometsCollider.Position.y), static_cast <float>(comets[i].cometsCollider.Radius), VIOLET);
 				DrawTexturePro(BigCometsTexture, source, dest, origin, rotation, WHITE);
 			}

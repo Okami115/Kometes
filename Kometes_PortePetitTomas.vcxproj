@@ -186,6 +186,7 @@ XCOPY "$(ProyectDir)assets" "$(SolutionDir)bin\$(Platform)\$(Configuration)\asse
     <ClCompile Include="Comets.cpp" />
     <ClCompile Include="CoreLoop.cpp" />
     <ClCompile Include="CreditsLoop.cpp" />
+    <ClCompile Include="ExitLoop.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -198,6 +199,7 @@ XCOPY "$(ProyectDir)assets" "$(SolutionDir)bin\$(Platform)\$(Configuration)\asse
     <ClInclude Include="Comets.h" />
     <ClInclude Include="CoreLoop.h" />
     <ClInclude Include="CreditsLoop.h" />
+    <ClInclude Include="ExitLoop.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="SpaceShip.h" />

@@ -3,9 +3,9 @@
 
 namespace OkamiIndustries
 {
-	Rectangle game;
+	Rectangle gameButtom;
 	Vector2 gameOrigin;
-	Vector2 GamePos;
+	Vector2 gamePos;
 
 	Rectangle options;
 	Vector2 optionsOrigin;
@@ -27,12 +27,12 @@ namespace OkamiIndustries
 		Mouse.Position.y = GetMousePosition().y + 20;
 		Mouse.Radius = 3;
 
-		game.x = (static_cast <float>(GetScreenWidth()) / 2) - game.width / 2;
-		game.y = static_cast <float>(GetScreenHeight()) / 3;
-		game.width = 500;
-		game.height = 100;
+		gameButtom.x = (static_cast <float>(GetScreenWidth()) / 2) - gameButtom.width / 2;
+		gameButtom.y = static_cast <float>(GetScreenHeight()) / 3;
+		gameButtom.width = 500;
+		gameButtom.height = 100;
 		gameOrigin = { 0, 0};
-		GamePos = { game.x, game.y };
+		gamePos = { gameButtom.x, gameButtom.y };
 
 		options.x = (static_cast <float>(GetScreenWidth()) / 2) - options.width / 2;
 		options.y = static_cast <float>(GetScreenHeight()) / 2.1f;
@@ -55,7 +55,7 @@ namespace OkamiIndustries
 		exitOrigin = { 0, 0 };
 		exitPos = { exit.x, exit.y };
 
-		if (CheckCollisionPointRec(Mouse.Position, game))
+		if (CheckCollisionPointRec(Mouse.Position, gameButtom))
 		{
 			selectMenu = 1;
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
@@ -99,11 +99,11 @@ namespace OkamiIndustries
 
 		if (selectMenu == 1)
 		{			
-			DrawTextureEx(PlaySelect, GamePos, 0, 1, WHITE);
+			DrawTextureEx(PlaySelect, gamePos, 0, 1, WHITE);
 		}
 		else
 		{
-			DrawTextureEx(Play, GamePos, 0, 1, WHITE);
+			DrawTextureEx(Play, gamePos, 0, 1, WHITE);
 		}
 
 		if (selectMenu == 2)

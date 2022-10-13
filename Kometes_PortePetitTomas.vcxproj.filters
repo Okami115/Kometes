@@ -28,6 +28,9 @@
     <Filter Include="SRC\GameLoop">
       <UniqueIdentifier>{b22ac7fe-03dc-4e15-94c4-f243387faa1c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SRC\ExitLoop">
+      <UniqueIdentifier>{7c318181-fc5f-4b6c-9796-facb83169ef8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -50,6 +53,9 @@
     </ClCompile>
     <ClCompile Include="CreditsLoop.cpp">
       <Filter>SRC\CreditsLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitLoop.cpp">
+      <Filter>SRC\ExitLoop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +81,9 @@
     </ClInclude>
     <ClInclude Include="CreditsLoop.h">
       <Filter>SRC\CreditsLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitLoop.h">
+      <Filter>SRC\ExitLoop</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
