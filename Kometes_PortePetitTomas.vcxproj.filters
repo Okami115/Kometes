@@ -1,80 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="SRC">
-      <UniqueIdentifier>{4a4141a9-d8b3-486a-b448-45c91f7917bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SRC\Main">
-      <UniqueIdentifier>{a300d278-8fb4-4d7c-85f2-7cb9c9fd296c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="assets">
       <UniqueIdentifier>{8ad898e8-9e16-4fc0-a14c-fe3b2d33cca5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SRC\SpaceShip">
-      <UniqueIdentifier>{5c30a534-8df7-42ec-91a5-18f8131b121f}</UniqueIdentifier>
+    <Filter Include="SRC">
+      <UniqueIdentifier>{b65d989a-26e1-4182-ae93-c59320bec0b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SRC\Kometes">
+      <UniqueIdentifier>{e22d1546-9590-46e8-b915-350946d09373}</UniqueIdentifier>
     </Filter>
     <Filter Include="SRC\CoreLoop">
-      <UniqueIdentifier>{9332870f-c653-4e9f-857f-fe74b4ceac30}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SRC\MenuLoop">
-      <UniqueIdentifier>{fdebc41c-94d6-4839-9d56-693bf0247e36}</UniqueIdentifier>
+      <UniqueIdentifier>{8dffbb25-18b8-437c-9d41-8d5097699155}</UniqueIdentifier>
     </Filter>
     <Filter Include="SRC\CreditsLoop">
-      <UniqueIdentifier>{f7394f23-c9f7-49d0-8d88-3a5af67e48bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SRC\Comets">
-      <UniqueIdentifier>{4e257fbb-8dee-4bb7-a271-59008271f5d4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SRC\GameLoop">
-      <UniqueIdentifier>{b22ac7fe-03dc-4e15-94c4-f243387faa1c}</UniqueIdentifier>
+      <UniqueIdentifier>{7389582f-1861-49ff-8d73-bdff034918f7}</UniqueIdentifier>
     </Filter>
     <Filter Include="SRC\ExitLoop">
-      <UniqueIdentifier>{7c318181-fc5f-4b6c-9796-facb83169ef8}</UniqueIdentifier>
+      <UniqueIdentifier>{99e8586c-e51e-4fc7-87be-1bbc31049a94}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SRC\PowerUps">
-      <UniqueIdentifier>{e4372840-28f7-45a3-b6ba-30d74e7f41ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SRC\Hunter">
-      <UniqueIdentifier>{7914d968-0406-4844-8aa9-198cc0a03c86}</UniqueIdentifier>
+    <Filter Include="SRC\GameLoop">
+      <UniqueIdentifier>{94d76d13-b19f-46ef-85e1-f89147b03786}</UniqueIdentifier>
     </Filter>
     <Filter Include="SRC\HowToPlayLoop">
-      <UniqueIdentifier>{00b53c00-5456-4789-a837-fa908741b37e}</UniqueIdentifier>
+      <UniqueIdentifier>{c9b7dcb8-41dd-470b-aa76-c420e03b41db}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>SRC\Main</Filter>
-    </ClCompile>
-    <ClCompile Include="SpaceShip.cpp">
-      <Filter>SRC\SpaceShip</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLoop.cpp">
-      <Filter>SRC\GameLoop</Filter>
-    </ClCompile>
-    <ClCompile Include="Comets.cpp">
-      <Filter>SRC\Comets</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>SRC\MenuLoop</Filter>
-    </ClCompile>
-    <ClCompile Include="CoreLoop.cpp">
-      <Filter>SRC\CoreLoop</Filter>
-    </ClCompile>
-    <ClCompile Include="CreditsLoop.cpp">
-      <Filter>SRC\CreditsLoop</Filter>
-    </ClCompile>
-    <ClCompile Include="ExitLoop.cpp">
-      <Filter>SRC\ExitLoop</Filter>
-    </ClCompile>
-    <ClCompile Include="PowerUpsLoop.cpp">
-      <Filter>SRC\PowerUps</Filter>
-    </ClCompile>
-    <ClCompile Include="Hunter.cpp">
-      <Filter>SRC\Hunter</Filter>
-    </ClCompile>
-    <ClCompile Include="HowToPlayLoop.cpp">
-      <Filter>SRC\HowToPlayLoop</Filter>
-    </ClCompile>
+    <Filter Include="SRC\Hunter">
+      <UniqueIdentifier>{21a89230-95ec-4bab-96af-0538356c9963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SRC\MenuLoop">
+      <UniqueIdentifier>{a5ac704d-f7f0-4834-85c2-9c40d7c68364}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SRC\PowerUps">
+      <UniqueIdentifier>{219361d8-0eda-442d-9d98-871f5d0a727b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SRC\SpaceShip">
+      <UniqueIdentifier>{2e4f870d-0b7a-43e4-bec9-95ae719deaaf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="SpaceShip.png">
@@ -82,35 +44,70 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SpaceShip.h">
-      <Filter>SRC\SpaceShip</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLoop.h">
+    <ClCompile Include="SRC\Comets\Comets.cpp">
+      <Filter>SRC\Kometes</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\CoreLoop\CoreLoop.cpp">
+      <Filter>SRC\CoreLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\CreditsLoop\CreditsLoop.cpp">
+      <Filter>SRC\CreditsLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\ExitLoop\ExitLoop.cpp">
+      <Filter>SRC\ExitLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\GameLoop\GameLoop.cpp">
       <Filter>SRC\GameLoop</Filter>
-    </ClInclude>
-    <ClInclude Include="Comets.h">
-      <Filter>SRC\Comets</Filter>
-    </ClInclude>
-    <ClInclude Include="Menu.h">
+    </ClCompile>
+    <ClCompile Include="SRC\HowToPlayLoop\HowToPlayLoop.cpp">
+      <Filter>SRC\HowToPlayLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Hunter\Hunter.cpp">
+      <Filter>SRC\Hunter</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\MenuLoop\Menu.cpp">
       <Filter>SRC\MenuLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\PowerUps\PowerUpsLoop.cpp">
+      <Filter>SRC\PowerUps</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\SpaceShip\SpaceShip.cpp">
+      <Filter>SRC\SpaceShip</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Main.cpp">
+      <Filter>SRC</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SRC\Comets\Comets.h">
+      <Filter>SRC\Kometes</Filter>
     </ClInclude>
-    <ClInclude Include="CoreLoop.h">
+    <ClInclude Include="SRC\CoreLoop\CoreLoop.h">
       <Filter>SRC\CoreLoop</Filter>
     </ClInclude>
-    <ClInclude Include="CreditsLoop.h">
+    <ClInclude Include="SRC\CreditsLoop\CreditsLoop.h">
       <Filter>SRC\CreditsLoop</Filter>
     </ClInclude>
-    <ClInclude Include="ExitLoop.h">
+    <ClInclude Include="SRC\ExitLoop\ExitLoop.h">
       <Filter>SRC\ExitLoop</Filter>
     </ClInclude>
-    <ClInclude Include="PowerUpsLoop.h">
-      <Filter>SRC\PowerUps</Filter>
+    <ClInclude Include="SRC\GameLoop\GameLoop.h">
+      <Filter>SRC\GameLoop</Filter>
     </ClInclude>
-    <ClInclude Include="Hunter.h">
+    <ClInclude Include="SRC\HowToPlayLoop\HowToPlay.h">
+      <Filter>SRC\HowToPlayLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Hunter\Hunter.h">
       <Filter>SRC\Hunter</Filter>
     </ClInclude>
-    <ClInclude Include="HowToPlay.h">
-      <Filter>SRC\HowToPlayLoop</Filter>
+    <ClInclude Include="SRC\MenuLoop\Menu.h">
+      <Filter>SRC\MenuLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\PowerUps\PowerUpsLoop.h">
+      <Filter>SRC\PowerUps</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\SpaceShip\SpaceShip.h">
+      <Filter>SRC\SpaceShip</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
