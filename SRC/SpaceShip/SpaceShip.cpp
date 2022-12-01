@@ -1,5 +1,5 @@
 #include "SpaceShip.h"
-#include "raymath.h"
+#include <cmath>
 #include <iostream> 
 #include "raylib.h"
 #include "../GameLoop/GameLoop.h"

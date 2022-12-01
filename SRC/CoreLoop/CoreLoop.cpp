@@ -1,5 +1,5 @@
 #include "CoreLoop.h"
-#include "raymath.h"
+#include <cmath>
 #include <iostream> 
 #include "raylib.h"
 #include <time.h> 

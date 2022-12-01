@@ -1,6 +1,6 @@
 #include "Comets.h"
 #include "../GameLoop/GameLoop.h"
-#include "raymath.h"
+#include <cmath>
 #include "../SpaceShip/SpaceShip.h"
 #include <iostream> 
 

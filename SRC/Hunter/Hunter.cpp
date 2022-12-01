@@ -1,6 +1,6 @@
 #include "raylib.h"
 #include "Hunter.h"
-#include "raymath.h"
+#include <cmath>
 #include "../SpaceShip/SpaceShip.h"
 #include <iostream>
 
