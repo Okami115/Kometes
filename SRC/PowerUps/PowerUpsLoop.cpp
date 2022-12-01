@@ -1,7 +1,7 @@
 #include "raylib.h"
 #include <iostream> 
-#include "Comets.h"
-#include "SpaceShip.h"
+#include "../Comets/Comets.h"
+#include "../SpaceShip/SpaceShip.h"
 
 namespace OkamiIndustries
 {

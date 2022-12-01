@@ -1,17 +1,17 @@
 #include "CoreLoop.h"
-#include "raylib.h"
-#include "raymath.h"
-#include "SpaceShip.h"
-#include "Hunter.h"
-#include "Comets.h"
-#include "GameLoop.h"
-#include "HowToPlay.h"
-#include "PowerUpsLoop.h"
-#include "ExitLoop.h"
-#include "CreditsLoop.h"
+#include <cmath>
 #include <iostream> 
+#include "raylib.h"
 #include <time.h> 
-#include "menu.h"
+#include "../HowToPlayLoop/HowToPlay.h"
+#include "../CreditsLoop/CreditsLoop.h"
+#include "../PowerUps/PowerUpsLoop.h"
+#include "../SpaceShip/SpaceShip.h"
+#include "../GAmeLoop/GameLoop.h"
+#include "../ExitLoop/ExitLoop.h"
+#include "../Hunter/Hunter.h"
+#include "../Comets/Comets.h"
+#include "../MenuLoop/Menu.h"
 
 
 namespace OkamiIndustries

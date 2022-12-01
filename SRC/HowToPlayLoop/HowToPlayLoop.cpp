@@ -1,5 +1,5 @@
 #include "raylib.h"
-#include "SpaceShip.h"
+#include "../SpaceShip/SpaceShip.h"
 #include "HowToPlay.h"
 #include <iostream>
 

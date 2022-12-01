@@ -1,6 +1,6 @@
 #pragma once
 #include "raylib.h"
-#include "GameLoop.h"
+#include "../GameLoop/GameLoop.h"
 
 namespace OkamiIndustries
 {

@@ -1,5 +1,5 @@
 #pragma once
-#include "GameLoop.h"
+#include "../GameLoop/GameLoop.h"
 
 namespace OkamiIndustries
 {

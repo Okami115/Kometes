@@ -1,7 +1,7 @@
 #include "Comets.h"
-#include "GameLoop.h"
-#include "raymath.h"
-#include "SpaceShip.h"
+#include "../GameLoop/GameLoop.h"
+#include <cmath>
+#include "../SpaceShip/SpaceShip.h"
 #include <iostream> 
 
 namespace OkamiIndustries

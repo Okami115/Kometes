@@ -1,5 +1,5 @@
 #pragma once
-#include "SpaceShip.h"
+#include "../SpaceShip/SpaceShip.h"
 
 namespace OkamiIndustries
 {

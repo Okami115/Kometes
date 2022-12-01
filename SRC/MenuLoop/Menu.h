@@ -2,6 +2,6 @@
 
 namespace OkamiIndustries
 {
-	void OptionsLoop();
-	void DrawOptions();
+	void LoopMenu();
+	void DrawMenu();
 }
