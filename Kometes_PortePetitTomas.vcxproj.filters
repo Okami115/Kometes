@@ -42,38 +42,38 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>SRC\Main</Filter>
-    </ClCompile>
-    <ClCompile Include="SpaceShip.cpp">
-      <Filter>SRC\SpaceShip</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLoop.cpp">
-      <Filter>SRC\GameLoop</Filter>
-    </ClCompile>
-    <ClCompile Include="Comets.cpp">
+    <ClCompile Include="SRC\Comets\Comets.cpp">
       <Filter>SRC\Comets</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>SRC\MenuLoop</Filter>
-    </ClCompile>
-    <ClCompile Include="CoreLoop.cpp">
+    <ClCompile Include="SRC\CoreLoop\CoreLoop.cpp">
       <Filter>SRC\CoreLoop</Filter>
     </ClCompile>
-    <ClCompile Include="CreditsLoop.cpp">
+    <ClCompile Include="SRC\CreditsLoop\CreditsLoop.cpp">
       <Filter>SRC\CreditsLoop</Filter>
     </ClCompile>
-    <ClCompile Include="ExitLoop.cpp">
+    <ClCompile Include="SRC\ExitLoop\ExitLoop.cpp">
       <Filter>SRC\ExitLoop</Filter>
     </ClCompile>
-    <ClCompile Include="PowerUpsLoop.cpp">
-      <Filter>SRC\PowerUps</Filter>
+    <ClCompile Include="SRC\GameLoop\GameLoop.cpp">
+      <Filter>SRC\GameLoop</Filter>
     </ClCompile>
-    <ClCompile Include="Hunter.cpp">
+    <ClCompile Include="SRC\HowToPlayLoop\HowToPlayLoop.cpp">
+      <Filter>SRC\HowToPlayLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\Hunter\Hunter.cpp">
       <Filter>SRC\Hunter</Filter>
     </ClCompile>
-    <ClCompile Include="HowToPlayLoop.cpp">
-      <Filter>SRC\HowToPlayLoop</Filter>
+    <ClCompile Include="SRC\Main.cpp">
+      <Filter>SRC\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\MenuLoop\Menu.cpp">
+      <Filter>SRC\MenuLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\PowerUps\PowerUpsLoop.cpp">
+      <Filter>SRC\PowerUps</Filter>
+    </ClCompile>
+    <ClCompile Include="SRC\SpaceShip\SpaceShip.cpp">
+      <Filter>SRC\SpaceShip</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -82,35 +82,35 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SpaceShip.h">
-      <Filter>SRC\SpaceShip</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLoop.h">
-      <Filter>SRC\GameLoop</Filter>
-    </ClInclude>
-    <ClInclude Include="Comets.h">
+    <ClInclude Include="SRC\Comets\Comets.h">
       <Filter>SRC\Comets</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>SRC\MenuLoop</Filter>
-    </ClInclude>
-    <ClInclude Include="CoreLoop.h">
+    <ClInclude Include="SRC\CoreLoop\CoreLoop.h">
       <Filter>SRC\CoreLoop</Filter>
     </ClInclude>
-    <ClInclude Include="CreditsLoop.h">
+    <ClInclude Include="SRC\CreditsLoop\CreditsLoop.h">
       <Filter>SRC\CreditsLoop</Filter>
     </ClInclude>
-    <ClInclude Include="ExitLoop.h">
+    <ClInclude Include="SRC\ExitLoop\ExitLoop.h">
       <Filter>SRC\ExitLoop</Filter>
     </ClInclude>
-    <ClInclude Include="PowerUpsLoop.h">
-      <Filter>SRC\PowerUps</Filter>
+    <ClInclude Include="SRC\GameLoop\GameLoop.h">
+      <Filter>SRC\GameLoop</Filter>
     </ClInclude>
-    <ClInclude Include="Hunter.h">
+    <ClInclude Include="SRC\HowToPlayLoop\HowToPlay.h">
+      <Filter>SRC\HowToPlayLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\Hunter\Hunter.h">
       <Filter>SRC\Hunter</Filter>
     </ClInclude>
-    <ClInclude Include="HowToPlay.h">
-      <Filter>SRC\HowToPlayLoop</Filter>
+    <ClInclude Include="SRC\MenuLoop\Menu.h">
+      <Filter>SRC\MenuLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\PowerUps\PowerUpsLoop.h">
+      <Filter>SRC\PowerUps</Filter>
+    </ClInclude>
+    <ClInclude Include="SRC\SpaceShip\SpaceShip.h">
+      <Filter>SRC\SpaceShip</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

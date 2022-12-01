@@ -183,32 +183,32 @@ XCOPY "$(ProyectDir)assets" "$(SolutionDir)bin\$(Platform)\$(Configuration)\asse
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Comets.cpp" />
-    <ClCompile Include="CoreLoop.cpp" />
-    <ClCompile Include="CreditsLoop.cpp" />
-    <ClCompile Include="ExitLoop.cpp" />
-    <ClCompile Include="GameLoop.cpp" />
-    <ClCompile Include="HowToPlayLoop.cpp" />
-    <ClCompile Include="Hunter.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="PowerUpsLoop.cpp" />
-    <ClCompile Include="SpaceShip.cpp" />
+    <ClCompile Include="SRC\Comets\Comets.cpp" />
+    <ClCompile Include="SRC\CoreLoop\CoreLoop.cpp" />
+    <ClCompile Include="SRC\CreditsLoop\CreditsLoop.cpp" />
+    <ClCompile Include="SRC\ExitLoop\ExitLoop.cpp" />
+    <ClCompile Include="SRC\GameLoop\GameLoop.cpp" />
+    <ClCompile Include="SRC\HowToPlayLoop\HowToPlayLoop.cpp" />
+    <ClCompile Include="SRC\Hunter\Hunter.cpp" />
+    <ClCompile Include="SRC\Main.cpp" />
+    <ClCompile Include="SRC\MenuLoop\Menu.cpp" />
+    <ClCompile Include="SRC\PowerUps\PowerUpsLoop.cpp" />
+    <ClCompile Include="SRC\SpaceShip\SpaceShip.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="SpaceShip.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Comets.h" />
-    <ClInclude Include="CoreLoop.h" />
-    <ClInclude Include="CreditsLoop.h" />
-    <ClInclude Include="ExitLoop.h" />
-    <ClInclude Include="GameLoop.h" />
-    <ClInclude Include="HowToPlay.h" />
-    <ClInclude Include="Hunter.h" />
-    <ClInclude Include="Menu.h" />
-    <ClInclude Include="PowerUpsLoop.h" />
-    <ClInclude Include="SpaceShip.h" />
+    <ClInclude Include="SRC\Comets\Comets.h" />
+    <ClInclude Include="SRC\CoreLoop\CoreLoop.h" />
+    <ClInclude Include="SRC\CreditsLoop\CreditsLoop.h" />
+    <ClInclude Include="SRC\ExitLoop\ExitLoop.h" />
+    <ClInclude Include="SRC\GameLoop\GameLoop.h" />
+    <ClInclude Include="SRC\HowToPlayLoop\HowToPlay.h" />
+    <ClInclude Include="SRC\Hunter\Hunter.h" />
+    <ClInclude Include="SRC\MenuLoop\Menu.h" />
+    <ClInclude Include="SRC\PowerUps\PowerUpsLoop.h" />
+    <ClInclude Include="SRC\SpaceShip\SpaceShip.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
